@@ -26,7 +26,6 @@ class App extends Component {
       <Container>
         <h1>Wheel Of Life v0.0.1</h1>
 
-        <h2>Current question</h2>
         <Question
           block={this.props.blocks[this.props.index]}
           onChange={value => {

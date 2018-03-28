@@ -5,7 +5,6 @@ import React from 'react';
 export default ({ block, onChange = () => {} }) => (
   <div>
     <h3>How do you feel about {block.name}?</h3>
-    <div>1 - 10</div>
 
     {times(index => (
       <button

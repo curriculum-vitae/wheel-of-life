@@ -16,7 +16,7 @@ const Component = ({ blocks }) => (
         <div
           key={block.name}
           style={{
-            opacity: block.value / 10
+            opacity: (block.value + 1) / 10
           }}
         >
           <div
