@@ -27,7 +27,13 @@ class App extends Component {
     return (
       <Router>
         <Container>
-          <Link to={'/'}>Wheel of Life</Link>
+          <br />
+          <br />
+          <br />
+          <br />
+          <Link to={'/'}>
+            <h1>Wheel of Life</h1>
+          </Link>
           <Switch>
             <Route
               path={'/'}

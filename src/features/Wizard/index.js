@@ -1,11 +1,36 @@
 import { compose, withProps, withState } from 'recompose';
+import { decodeStateFromString, encodeStateToString } from '../../common/helpers';
+import { flow, reduce, sortBy } from 'lodash/fp';
 
 import Question from '../Question';
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Wheel from '../Wheel';
-import { decodeStateFromString } from '../../common/helpers';
 
-const Component = ({ blocks, index, setBlocks, setIndex }) => (
+const convertMatchToData = match => {
+  const str = match.url.replace('/', '');
+  return decodeStateFromString(str);
+};
+
+const convertBlocksToHash = flow(
+  sortBy('name'),
+  reduce((hash, block) => hash + block.name + block.value, '')
+);
+
+const isInSync = ({ match, blocks, index }) => {
+  console.log(convertBlocksToHash(blocks));
+  const decoded = convertMatchToData(match);
+  if (decoded.index !== index) return false;
+  if (convertBlocksToHash(decoded.blocks) !== convertBlocksToHash(blocks)) return false;
+  return true;
+};
+
+const Sync = ({ match, blocks, index }) =>
+  isInSync({ match, blocks, index }) ? null : (
+    <Redirect to={`/${encodeStateToString({ blocks, index })}`} />
+  );
+
+const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
   <React.Fragment>
     <Question
       block={blocks[index]}
@@ -35,14 +60,9 @@ const Component = ({ blocks, index, setBlocks, setIndex }) => (
     <Wheel blocks={blocks} />
     <br />
     <button>Share</button>
+    <Sync match={match} blocks={blocks} index={index} />
   </React.Fragment>
 );
-
-const convertMatchToData = match => {
-  const str = match.url.replace('/', '');
-
-  return decodeStateFromString(str);
-};
 
 export default compose(
   withState('blocks', 'setBlocks', ({ match }) => {

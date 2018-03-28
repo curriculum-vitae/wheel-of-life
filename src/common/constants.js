@@ -1,50 +1,47 @@
 export const BLOCKS = [
   {
     name: 'Health',
-    value: 0
+    value: 1
   },
   {
     name: 'Family',
-    value: 0
+    value: 1
   },
   {
     name: 'Carreer',
-    value: 0
+    value: 1
   },
   {
     name: 'Personal development',
-    value: 0
+    value: 1
   },
-  {
-    name: 'KSA',
-    value: 0
-  },
+
   {
     name: 'Partner',
-    value: 0
+    value: 1
   },
   {
     name: 'Spirituality',
-    value: 0
+    value: 1
   },
   {
     name: 'Fun',
-    value: 0
+    value: 1
   },
   {
     name: 'Environment',
-    value: 0
+    value: 1
   },
   {
     name: 'Finances',
-    value: 0
+    value: 1
   },
   {
     name: 'Friends',
-    value: 0
+    value: 1
   },
   {
     name: 'Social',
-    value: 0
+    value: 1
   }
 ];
