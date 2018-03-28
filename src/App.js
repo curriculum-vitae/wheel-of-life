@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Link, Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Link, Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
 import { decodeStateFromString, encodeStateToString } from './common/helpers';
 
@@ -28,19 +28,21 @@ class App extends Component {
       <Router>
         <Container>
           <Link to={'/'}>Wheel of Life</Link>
-          <Route
-            path={'/'}
-            exact={true}
-            render={() => (
-              <Redirect
-                to={`/${encodeStateToString({
-                  blocks: BLOCKS,
-                  index: 0
-                })}`}
-              />
-            )}
-          />
-          <Route path={'*'} component={Wizard} />
+          <Switch>
+            <Route
+              path={'/'}
+              exact={true}
+              render={() => (
+                <Redirect
+                  to={`/${encodeStateToString({
+                    blocks: BLOCKS,
+                    index: 0
+                  })}`}
+                />
+              )}
+            />
+            <Route path={'/*'} component={Wizard} />
+          </Switch>
         </Container>
       </Router>
     );
