@@ -1,7 +1,7 @@
-export const encodeStateToURL = state => {
-  return 'ENCODED_STATE';
+export const encodeStateToString = state => {
+  return JSON.stringify(state);
 };
 
-export const decodeStateFromURL = url => {
-  return {};
+export const decodeStateFromString = str => {
+  return JSON.parse(str);
 };
