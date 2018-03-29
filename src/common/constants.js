@@ -13,7 +13,7 @@ import {
   yellow
 } from 'common/colors';
 
-const SHADE = 900;
+const SHADE = 700;
 
 export const BLOCKS = [
   {

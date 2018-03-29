@@ -41,7 +41,9 @@ const StepButton = ({ ...props }) => (
 );
 
 const Progress = ({ blocks, index }) => (
-  <div style={{ textAlign: 'center' }}>{Math.floor(100 * index / blocks.length)}% done</div>
+  <div style={{ textAlign: 'center', color: 'white' }}>
+    {Math.floor(100 * index / blocks.length)}% done
+  </div>
 );
 
 const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
@@ -57,7 +59,9 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       <br />
       <br />
       <Link to={'/'}>
-        <h1 style={{ margin: '0px', textAlign: 'center' }}>Wheel of Life</h1>
+        <h1 style={{ margin: '0px', textAlign: 'center', fontSize: '60px', color: 'white' }}>
+          Wheel of Life
+        </h1>
       </Link>
       {index < blocks.length ? (
         <React.Fragment>

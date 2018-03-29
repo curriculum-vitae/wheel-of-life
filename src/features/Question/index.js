@@ -8,7 +8,8 @@ const ButtonForRating = ({ selected, ...props }) => (
       cursor: 'pointer',
       width: '40px',
       height: '40px',
-      border: selected ? '1px solid blue' : undefined
+      backgroundColor: selected ? 'purple' : undefined,
+      color: selected ? 'white' : undefined
     }}
     {...props}
   />
@@ -24,10 +25,11 @@ export default ({ block, onChange = () => {} }) => (
       style={{
         textAlign: 'center',
         color: 'white',
-        fontWeight: '100'
+        fontWeight: '100',
+        fontSize: '48px'
       }}
     >
-      How do you feel about {block.name}?
+      {block.name}
     </h2>
 
     <div
