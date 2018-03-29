@@ -49,7 +49,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
     <div
       style={{
         height: '100vh',
-        backgroundColor: 'blue'
+        backgroundColor: index < blocks.length ? blocks[index].color : 'black'
       }}
     >
       <br />
