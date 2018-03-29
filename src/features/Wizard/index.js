@@ -8,7 +8,7 @@ import React from 'react';
 import Wheel from '../Wheel';
 
 const convertMatchToData = match => {
-  const str = match.url.replace('/', '');
+  const str = match.params.state;
   return decodeStateFromString(str);
 };
 
@@ -26,7 +26,7 @@ const isInSync = ({ match, blocks, index }) => {
 
 const Sync = ({ match, blocks, index }) =>
   isInSync({ match, blocks, index }) ? null : (
-    <Redirect to={`/${encodeStateToString({ blocks, index })}`} />
+    <Redirect to={`/quiz/${encodeStateToString({ blocks, index })}`} />
   );
 
 const StepButton = ({ ...props }) => (
@@ -125,6 +125,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
 
 export default compose(
   withState('blocks', 'setBlocks', ({ match }) => {
+    console.log(match);
     const { blocks } = convertMatchToData(match);
     return blocks;
   }),

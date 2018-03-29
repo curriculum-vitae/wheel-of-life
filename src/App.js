@@ -6,6 +6,7 @@ import { decodeStateFromString, encodeStateToString } from './common/helpers';
 
 import { BLOCKS } from './common/constants';
 import Question from './features/Question';
+import Welcome from './features/Welcome';
 import Wheel from './features/Wheel';
 import Wizard from './features/Wizard';
 import { compose } from 'lodash/fp';
@@ -19,19 +20,20 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Switch>
+            <Route path={'/'} exact={true} component={Welcome} />
             <Route
-              path={'/'}
+              path={'/quiz'}
               exact={true}
               render={() => (
                 <Redirect
-                  to={`/${encodeStateToString({
+                  to={`/quiz/${encodeStateToString({
                     blocks: BLOCKS,
                     index: 0
                   })}`}
                 />
               )}
             />
-            <Route path={'/*'} component={Wizard} />
+            <Route path={'/quiz/:state'} component={Wizard} />
           </Switch>
         </React.Fragment>
       </Router>
