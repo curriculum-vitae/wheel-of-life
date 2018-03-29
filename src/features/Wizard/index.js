@@ -40,6 +40,10 @@ const StepButton = ({ ...props }) => (
   />
 );
 
+const Progress = ({ blocks, index }) => (
+  <div style={{ textAlign: 'center' }}>{Math.floor(100 * index / blocks.length)}% done</div>
+);
+
 const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
   <React.Fragment>
     <div
@@ -56,6 +60,9 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       </Link>
       {index < blocks.length ? (
         <React.Fragment>
+          <br />
+          <br />
+          <Progress blocks={blocks} index={index} />
           <Question
             block={blocks[index]}
             onChange={value => {
