@@ -63,8 +63,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
           style={{
             margin: '0px',
             textAlign: 'center',
-            fontSize: '60px',
-            fontWeight: '100',
+
             color: 'white'
           }}
         >
