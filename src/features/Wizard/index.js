@@ -122,6 +122,9 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
           </button>
           <br />
           <button>Share</button>
+          <Link to={'/'}>
+            <button>Main page</button>
+          </Link>
           <h1>What is next?</h1>
           <p>Find what sphere are lacking your attention.</p>
           <p>Go fix</p>
