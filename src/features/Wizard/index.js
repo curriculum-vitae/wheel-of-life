@@ -54,49 +54,53 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       <Link to={'/'}>
         <h1 style={{ margin: '0px', textAlign: 'center' }}>Wheel of Life</h1>
       </Link>
-      <Question
-        block={blocks[index]}
-        onChange={value => {
-          setBlocks([
-            ...blocks.slice(0, index),
-            {
-              ...blocks[index],
-              value: value
-            },
-            ...blocks.slice(index + 1, blocks.length)
-          ]);
-        }}
-      />
-      <br />
-
-      <React.Fragment>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between'
-          }}
-        >
-          <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
-            prev
-          </StepButton>
-          <StepButton onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
-            skip
-          </StepButton>
-          <StepButton onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
-            next
-          </StepButton>
-        </div>
-      </React.Fragment>
-
-      {index === blocks.length - 1 ? (
+      {index < blocks.length ? (
+        <React.Fragment>
+          <Question
+            block={blocks[index]}
+            onChange={value => {
+              setBlocks([
+                ...blocks.slice(0, index),
+                {
+                  ...blocks[index],
+                  value: value
+                },
+                ...blocks.slice(index + 1, blocks.length)
+              ]);
+            }}
+          />
+          <React.Fragment>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between'
+              }}
+            >
+              <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
+                prev
+              </StepButton>
+              <StepButton onClick={() => setIndex(index + 1)}>skip</StepButton>
+              <StepButton onClick={() => setIndex(index + 1)}>
+                {index === blocks.length - 1 ? 'Finish' : 'Next'}
+              </StepButton>
+            </div>
+          </React.Fragment>
+        </React.Fragment>
+      ) : (
         <React.Fragment>
           <br />
           <h2>Result</h2>
           <Wheel blocks={blocks} />
           <br />
+          <button onClick={() => setIndex(index - 1)} disabled={index === 0}>
+            Edit
+          </button>
+          <br />
           <button>Share</button>
         </React.Fragment>
-      ) : null}
+      )}
+      <br />
+
       <Sync match={match} blocks={blocks} index={index} />
     </div>
   </React.Fragment>
