@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Typography from 'typography';
 import registerServiceWorker from 'registerServiceWorker.js';
-import typographyTheme from 'typography-theme-ocean-beach';
+import typographyTheme from 'typography-theme-lincoln';
 
 const typography = new Typography(typographyTheme);
 typography.injectStyles();

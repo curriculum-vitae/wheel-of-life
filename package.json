@@ -10,6 +10,7 @@
     "recompose": "0.26.0",
     "semiotic": "1.9.1",
     "typography": "0.16.6",
+    "typography-theme-lincoln": "0.15.11",
     "typography-theme-ocean-beach": "0.15.11"
   },
   "devDependencies": {

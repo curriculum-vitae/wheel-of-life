@@ -7133,6 +7133,13 @@ typography-normalize@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.14.0.tgz#1d77c1fe2aaf4a51b3673c4c85c85a65a2d4b573"
 
+typography-theme-lincoln@0.15.11:
+  version "0.15.11"
+  resolved "https://registry.yarnpkg.com/typography-theme-lincoln/-/typography-theme-lincoln-0.15.11.tgz#83236d39fe0f5f62695c73f5d247d70626ef19f0"
+  dependencies:
+    gray-percentage "^2.0.0"
+    typography-breakpoint-constants "^0.15.10"
+
 typography-theme-ocean-beach@0.15.11:
   version "0.15.11"
   resolved "https://registry.yarnpkg.com/typography-theme-ocean-beach/-/typography-theme-ocean-beach-0.15.11.tgz#a58d661e8d87521fbd0e14dc84dae42091ad004f"
