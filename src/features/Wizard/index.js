@@ -1,11 +1,11 @@
 import { Link, Redirect } from 'react-router-dom';
 import { compose, withProps, withState } from 'recompose';
-import { decodeStateFromString, encodeStateToString } from '../../common/helpers';
+import { decodeStateFromString, encodeStateToString } from 'common/helpers';
 import { flow, reduce, sortBy } from 'lodash/fp';
 
-import Question from '../Question';
+import Question from 'features/Question';
 import React from 'react';
-import Wheel from '../Wheel';
+import Wheel from 'features/Wheel';
 
 const convertMatchToData = match => {
   const str = match.params.state;

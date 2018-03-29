@@ -1,9 +1,9 @@
 import { compose, find, flow, map } from 'lodash/fp';
 
-import { BLOCKS } from '../../common/constants';
+import { BLOCKS } from 'common/constants';
 import { OrdinalFrame } from 'semiotic';
 import React from 'react';
-import { SAMPLE_WIND_ROSE_DATA } from './constants';
+import { SAMPLE_WIND_ROSE_DATA } from 'features/Wheel/constants';
 import { setDisplayName } from 'recompose';
 
 const mapPropsToQueries = () => [];

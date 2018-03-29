@@ -11,7 +11,7 @@ import {
   purple,
   red,
   yellow
-} from './colors';
+} from 'common/colors';
 
 const SHADE = 900;
 
