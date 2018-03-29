@@ -28,9 +28,7 @@ class App extends Component {
       <Router>
         <Container>
           <br />
-          <br />
-          <br />
-          <br />
+
           <Link to={'/'}>
             <h1>Wheel of Life</h1>
           </Link>
