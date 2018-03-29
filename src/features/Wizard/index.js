@@ -18,7 +18,6 @@ const convertBlocksToHash = flow(
 );
 
 const isInSync = ({ match, blocks, index }) => {
-  console.log(convertBlocksToHash(blocks));
   const decoded = convertMatchToData(match);
   if (decoded.index !== index) return false;
   if (convertBlocksToHash(decoded.blocks) !== convertBlocksToHash(blocks)) return false;
@@ -29,6 +28,17 @@ const Sync = ({ match, blocks, index }) =>
   isInSync({ match, blocks, index }) ? null : (
     <Redirect to={`/${encodeStateToString({ blocks, index })}`} />
   );
+
+const StepButton = ({ ...props }) => (
+  <button
+    style={{
+      cursor: 'pointer',
+      width: '60px',
+      height: '60px'
+    }}
+    {...props}
+  />
+);
 
 const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
   <React.Fragment>
@@ -46,15 +56,25 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       }}
     />
     <br />
-    <button onClick={() => setIndex(index - 1)} disabled={index === 0}>
-      prev
-    </button>
-    <button onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
-      skip
-    </button>
-    <button onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
-      next
-    </button>
+
+    <React.Fragment>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
+      >
+        <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
+          prev
+        </StepButton>
+        <StepButton onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
+          skip
+        </StepButton>
+        <StepButton onClick={() => setIndex(index + 1)} disabled={index === blocks.length - 1}>
+          next
+        </StepButton>
+      </div>
+    </React.Fragment>
     <br />
     <h2>Result</h2>
     <Wheel blocks={blocks} />
