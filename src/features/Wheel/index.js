@@ -1,5 +1,6 @@
-import { compose, flow, map } from 'lodash/fp';
+import { compose, find, flow, map } from 'lodash/fp';
 
+import { BLOCKS } from '../../common/constants';
 import { OrdinalFrame } from 'semiotic';
 import React from 'react';
 import { SAMPLE_WIND_ROSE_DATA } from './constants';
@@ -32,6 +33,8 @@ const colorHash = {
 
 const SIZE = 500;
 
+const getColor = label => flow(find(block => block.name === label), block => block.color)(BLOCKS);
+
 const Component = ({ blocks }) => (
   <div
     style={{
@@ -43,7 +46,7 @@ const Component = ({ blocks }) => (
       data={convertBlocksToWindRoseData(blocks)}
       oAccessor={'label'}
       rAccessor={'value'}
-      style={d => ({ fill: colorHash[d.label] })}
+      style={d => ({ fill: getColor(d.label) })}
       type={'bar'}
       projection={'radial'}
       axis={{
