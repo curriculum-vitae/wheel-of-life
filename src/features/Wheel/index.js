@@ -19,18 +19,6 @@ const convertBlocksToWindRoseData = blocks => {
   )(blocks);
 };
 
-const colorHash = {
-  Health: 'red',
-  Carreer: 'blue',
-  Fun: 'orange',
-  Friends: 'white',
-  Family: 'yellow',
-  'Personal development': 'grey',
-  Spirituality: 'purple',
-  Environment: 'green',
-  undefined: 'black'
-};
-
 const SIZE = 500;
 
 const getColor = label => flow(find(block => block.name === label), block => block.color)(BLOCKS);
