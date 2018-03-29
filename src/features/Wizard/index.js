@@ -49,7 +49,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
     <div
       style={{
         height: '100vh',
-        backgroundColor: index < blocks.length ? blocks[index].color : 'black'
+        backgroundColor: index < blocks.length ? blocks[index].color : 'white'
       }}
     >
       <br />
@@ -97,7 +97,14 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
         <React.Fragment>
           <br />
           <h2>Result</h2>
-          <Wheel blocks={blocks} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+          >
+            <Wheel blocks={blocks} />
+          </div>
           <br />
           <button onClick={() => setIndex(index - 1)} disabled={index === 0}>
             Edit

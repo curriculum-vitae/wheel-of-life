@@ -30,22 +30,30 @@ const colorHash = {
   undefined: 'black'
 };
 
+const SIZE = 500;
+
 const Component = ({ blocks }) => (
-  <OrdinalFrame
-    size={[400, 400]}
-    data={convertBlocksToWindRoseData(blocks)}
-    oAccessor={'label'}
-    rAccessor={'value'}
-    style={d => ({ fill: colorHash[d.label] })}
-    type={'bar'}
-    projection={'radial'}
-    axis={{
-      label: { name: 'Windiness', locationDistance: 5 }
+  <div
+    style={{
+      marginLeft: `-${SIZE}px`
     }}
-    oPadding={1}
-    margin={{ bottom: 20, top: 20, left: 20, right: 20 }}
-    hoverAnnotation={true}
-  />
+  >
+    <OrdinalFrame
+      size={[SIZE, SIZE]}
+      data={convertBlocksToWindRoseData(blocks)}
+      oAccessor={'label'}
+      rAccessor={'value'}
+      style={d => ({ fill: colorHash[d.label] })}
+      type={'bar'}
+      projection={'radial'}
+      axis={{
+        label: { name: 'Windiness', locationDistance: 5 }
+      }}
+      oPadding={1}
+      margin={{ bottom: 20, top: 20, left: 20, right: 20 }}
+      hoverAnnotation={true}
+    />
+  </div>
 );
 
 const mapStateToProps = state => {
