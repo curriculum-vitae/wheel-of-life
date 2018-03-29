@@ -2,6 +2,18 @@ import { flow, times } from 'lodash/fp';
 
 import React from 'react';
 
+const ButtonForRating = ({ selected, ...props }) => (
+  <button
+    style={{
+      cursor: 'pointer',
+      width: '40px',
+      height: '40px',
+      border: selected ? '1px solid blue' : undefined
+    }}
+    {...props}
+  />
+);
+
 export default ({ block, onChange = () => {} }) => (
   <div
     style={{
@@ -26,15 +38,13 @@ export default ({ block, onChange = () => {} }) => (
       }}
     >
       {times(index => (
-        <button
-          style={{
-            border: block.value === index + 1 ? '1px solid red' : undefined
-          }}
+        <ButtonForRating
+          selected={block.value === index + 1}
           key={index + 1}
           onClick={() => onChange(index + 1)}
         >
           {index + 1}
-        </button>
+        </ButtonForRating>
       ))(10)}
     </div>
   </div>
