@@ -59,7 +59,15 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       <br />
       <br />
       <Link to={'/'}>
-        <h1 style={{ margin: '0px', textAlign: 'center', fontSize: '60px', color: 'white' }}>
+        <h1
+          style={{
+            margin: '0px',
+            textAlign: 'center',
+            fontSize: '60px',
+            fontWeight: '100',
+            color: 'white'
+          }}
+        >
           Wheel of Life
         </h1>
       </Link>

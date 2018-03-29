@@ -8,7 +8,9 @@
     "react-dom": "16.2.0",
     "react-router-dom": "4.2.2",
     "recompose": "0.26.0",
-    "semiotic": "1.9.1"
+    "semiotic": "1.9.1",
+    "typography": "0.16.6",
+    "typography-theme-ocean-beach": "0.15.11"
   },
   "devDependencies": {
     "react-scripts": "1.1.1"
