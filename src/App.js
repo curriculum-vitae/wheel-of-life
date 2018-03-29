@@ -11,27 +11,13 @@ import Wizard from './features/Wizard';
 import { compose } from 'lodash/fp';
 import logo from './logo.svg';
 
-const Container = ({ children }) => (
-  <div
-    style={{
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '50%'
-    }}
-    children={children}
-  />
-);
+const Container = ({ children }) => <div style={{}} children={children} />;
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Container>
-          <br />
-
-          <Link to={'/'}>
-            <h1>Wheel of Life</h1>
-          </Link>
+        <React.Fragment>
           <Switch>
             <Route
               path={'/'}
@@ -47,7 +33,7 @@ class App extends Component {
             />
             <Route path={'/*'} component={Wizard} />
           </Switch>
-        </Container>
+        </React.Fragment>
       </Router>
     );
   }

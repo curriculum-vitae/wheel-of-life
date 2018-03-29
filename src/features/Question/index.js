@@ -17,7 +17,6 @@ const ButtonForRating = ({ selected, ...props }) => (
 export default ({ block, onChange = () => {} }) => (
   <div
     style={{
-      backgroundColor: 'green',
       padding: '50px'
     }}
   >
