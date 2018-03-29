@@ -95,8 +95,6 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <br />
-          <h2>Result</h2>
           <div
             style={{
               display: 'flex',
@@ -111,6 +109,11 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
           </button>
           <br />
           <button>Share</button>
+          <h1>What is next?</h1>
+          <p>Find what sphere are lacking your attention.</p>
+          <p>Go fix</p>
+          <p>There are coaches</p>
+          <p>There is literature</p>
         </React.Fragment>
       )}
       <br />
