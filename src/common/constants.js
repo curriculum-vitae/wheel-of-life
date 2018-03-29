@@ -1,58 +1,75 @@
+import {
+  amber,
+  blue,
+  brown,
+  cyan,
+  deepOrange,
+  green,
+  indigo,
+  orange,
+  pink,
+  purple,
+  red,
+  yellow
+} from './colors';
+
+const SHADE = 900;
+
 export const BLOCKS = [
   {
     name: 'Health',
-    color: 'red',
+    color: red[SHADE],
     value: 1
   },
   {
     name: 'Family',
-    color: 'blue',
+    color: blue[SHADE],
     value: 1
   },
   {
     name: 'Carreer',
-    color: 'pink',
+    color: pink[SHADE],
     value: 1
   },
   {
     name: 'Personal development',
-    color: 'yellow',
+    color: yellow[SHADE],
     value: 1
   },
 
   {
     name: 'Partner',
-    color: 'yellow',
+    color: purple[SHADE],
     value: 1
   },
   {
     name: 'Spirituality',
-    color: 'yellow',
+    color: deepOrange[SHADE],
     value: 1
   },
   {
     name: 'Fun',
-    color: 'yellow',
+    color: brown[SHADE],
     value: 1
   },
   {
     name: 'Environment',
-    color: 'yellow',
+    color: green[SHADE],
     value: 1
   },
   {
     name: 'Finances',
-    color: 'yellow',
+    color: cyan[SHADE],
     value: 1
   },
   {
     name: 'Friends',
-    color: 'yellow',
+    color: amber[SHADE],
     value: 1
   },
   {
     name: 'Social',
-    color: 'yellow',
+    color: indigo[SHADE],
     value: 1
   }
 ];
