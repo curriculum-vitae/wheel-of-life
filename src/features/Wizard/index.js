@@ -5,6 +5,7 @@ import { flow, reduce, sortBy } from 'lodash/fp';
 
 import Question from 'features/Question';
 import React from 'react';
+import Share from 'features/Share';
 import Wheel from 'features/Wheel';
 
 const convertMatchToData = match => {
@@ -120,7 +121,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
             Edit
           </button>
           <br />
-          <button>Share</button>
+          <Share blocks={blocks} />
           <Link to={'/'}>
             <button>Main page</button>
           </Link>
