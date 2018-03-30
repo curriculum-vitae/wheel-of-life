@@ -19,7 +19,7 @@ const createTwitterShareURL = () => {
 };
 
 export default ({ blocks }) => (
-  <div style={{ padding: '20px' }}>
+  <div>
     <input onClick={() => runCopy()} value={createShareURL()} onChange={() => {}} />
     <button onClick={() => runCopy()}>COPY</button>
     <br />
