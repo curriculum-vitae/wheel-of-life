@@ -51,45 +51,40 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
       <br />
       <br />
       <br />
-
-      {index < blocks.length ? (
+      <React.Fragment>
+        <br />
+        <br />
+        <Progress blocks={blocks} index={index} />
+        <Question
+          block={blocks[index]}
+          onChange={value => {
+            setBlocks([
+              ...blocks.slice(0, index),
+              {
+                ...blocks[index],
+                value: value
+              },
+              ...blocks.slice(index + 1, blocks.length)
+            ]);
+          }}
+        />
         <React.Fragment>
-          <br />
-          <br />
-          <Progress blocks={blocks} index={index} />
-          <Question
-            block={blocks[index]}
-            onChange={value => {
-              setBlocks([
-                ...blocks.slice(0, index),
-                {
-                  ...blocks[index],
-                  value: value
-                },
-                ...blocks.slice(index + 1, blocks.length)
-              ]);
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between'
             }}
-          />
-          <React.Fragment>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between'
-              }}
-            >
-              <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
-                prev
-              </StepButton>
-              <StepButton onClick={() => setIndex(index + 1)}>skip</StepButton>
-              <StepButton onClick={() => setIndex(index + 1)}>
-                {index === blocks.length - 1 ? 'Finish' : 'Next'}
-              </StepButton>
-            </div>
-          </React.Fragment>
+          >
+            <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
+              prev
+            </StepButton>
+            <StepButton onClick={() => setIndex(index + 1)}>skip</StepButton>
+            <StepButton onClick={() => setIndex(index + 1)}>
+              {index === blocks.length - 1 ? 'Finish' : 'Next'}
+            </StepButton>
+          </div>
         </React.Fragment>
-      ) : (
-        <Results blocks={blocks} index={index} setIndex={setIndex} />
-      )}
+      </React.Fragment>
     </div>
   </React.Fragment>
 );
