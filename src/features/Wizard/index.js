@@ -38,7 +38,7 @@ const Progress = ({ blocks, index }) => (
   </div>
 );
 
-const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
+const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLastStep }) => (
   <React.Fragment>
     <div
       style={{
@@ -55,19 +55,23 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
         <br />
         <br />
         <Progress blocks={blocks} index={index} />
-        <Question
-          block={blocks[index]}
-          onChange={value => {
-            setBlocks([
-              ...blocks.slice(0, index),
-              {
-                ...blocks[index],
-                value: value
-              },
-              ...blocks.slice(index + 1, blocks.length)
-            ]);
-          }}
-        />
+        {isFinished ? (
+          <h1 style={{ textAlign: 'center', fonstSize: '60px', color: 'white' }}>DONE</h1>
+        ) : (
+          <Question
+            block={blocks[index]}
+            onChange={value => {
+              setBlocks([
+                ...blocks.slice(0, index),
+                {
+                  ...blocks[index],
+                  value: value
+                },
+                ...blocks.slice(index + 1, blocks.length)
+              ]);
+            }}
+          />
+        )}
         <React.Fragment>
           <div
             style={{
@@ -78,8 +82,10 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
             <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
               prev
             </StepButton>
-            <StepButton onClick={() => setIndex(index + 1)}>skip</StepButton>
-            {index === blocks.length - 1 ? (
+            <StepButton disabled={isFinished} onClick={() => setIndex(index + 1)}>
+              skip
+            </StepButton>
+            {isLastStep ? (
               <Link to={`/results/${encodeStateToString({ blocks })}`}>
                 <StepButton onClick={() => setIndex(index + 1)}>FINISH</StepButton>
               </Link>
@@ -93,6 +99,11 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
   </React.Fragment>
 );
 
-export default compose(withState('blocks', 'setBlocks', BLOCKS), withState('index', 'setIndex', 0))(
-  Component
-);
+export default compose(
+  withState('blocks', 'setBlocks', BLOCKS),
+  withState('index', 'setIndex', 0),
+  withProps(props => ({
+    isLastStep: props.index === props.blocks.length - 1,
+    isFinished: props.index >= props.blocks.length - 1
+  }))
+)(Component);
