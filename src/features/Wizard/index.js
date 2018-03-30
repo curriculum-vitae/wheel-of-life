@@ -7,6 +7,7 @@ import AppBar from 'features/AppBar';
 import { BLOCKS } from 'common/constants';
 import Question from 'features/Question';
 import React from 'react';
+import Results from 'features/Results';
 import Share from 'features/Share';
 import Wheel from 'features/Wheel';
 
@@ -87,30 +88,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
           </React.Fragment>
         </React.Fragment>
       ) : (
-        <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-          >
-            <Wheel blocks={blocks} />
-          </div>
-          <br />
-          <button onClick={() => setIndex(index - 1)} disabled={index === 0}>
-            Edit
-          </button>
-          <br />
-          <Share blocks={blocks} />
-          <Link to={'/'}>
-            <button>Main page</button>
-          </Link>
-          <h1>What is next?</h1>
-          <p>Find what sphere are lacking your attention.</p>
-          <p>Go fix</p>
-          <p>There are coaches</p>
-          <p>There is literature</p>
-        </React.Fragment>
+        <Results blocks={blocks} index={index} setIndex={setIndex} />
       )}
     </div>
   </React.Fragment>
