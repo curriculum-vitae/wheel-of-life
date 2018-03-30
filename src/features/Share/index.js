@@ -10,13 +10,27 @@ const runCopy = () => {
   window.alert('Link was copied to clipbard!');
 };
 
+const createFacebookShareURL = () => {
+  return 'http://fb.com';
+};
+
+const createTwitterShareURL = () => {
+  return 'https://twitter.com';
+};
+
 export default ({ blocks }) => (
   <div style={{ padding: '20px' }}>
     <input onClick={() => runCopy()} value={createShareURL()} onChange={() => {}} />
     <button onClick={() => runCopy()}>COPY</button>
     <br />
-    <button>FaceBook</button>
     <br />
-    <button>Twitter</button>
+    <a target={'_blank'} href={createFacebookShareURL()}>
+      <button>FaceBook</button>
+    </a>
+    <br />
+    <br />
+    <a target={'_blank'} href={createTwitterShareURL()}>
+      <button>Twitter</button>
+    </a>
   </div>
 );
