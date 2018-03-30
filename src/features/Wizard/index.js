@@ -6,6 +6,7 @@ import { flow, reduce, sortBy } from 'lodash/fp';
 
 import AppBar from 'features/AppBar';
 import { BLOCKS } from 'common/constants';
+import Progress from 'features/Progress';
 import Question from 'features/Question';
 import React from 'react';
 import Results from 'features/Results';
@@ -21,12 +22,6 @@ const StepButton = ({ ...props }) => (
     }}
     {...props}
   />
-);
-
-const Progress = ({ blocks, index }) => (
-  <div style={{ textAlign: 'center', color: 'white' }}>
-    {Math.floor(100 * index / blocks.length)}% done
-  </div>
 );
 
 const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLastStep }) => (
