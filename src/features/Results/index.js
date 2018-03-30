@@ -17,14 +17,16 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <Wheel blocks={blocks} />
     </div>
     <br />
-    <button onClick={() => setIndex(index - 1)} disabled={index === 0}>
-      Edit
-    </button>
+    <Link to={'/quiz'}>
+      <button>Start again</button>
+    </Link>
     <br />
-    <Share blocks={blocks} />
     <Link to={'/'}>
       <button>Main page</button>
     </Link>
+    <br />
+    <Share blocks={blocks} />
+
     <h1>What is next?</h1>
     <p>Find what sphere are lacking your attention.</p>
     <p>Go fix</p>
