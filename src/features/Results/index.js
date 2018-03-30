@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import Share from 'features/Share';
 import Wheel from 'features/Wheel';
+import { compose } from 'recompose';
 
-export default ({ setIndex, blocks, index }) => (
+const Results = ({ setIndex = () => {}, blocks = [], index = 0 }) => (
   <React.Fragment>
     <div
       style={{
@@ -29,3 +30,5 @@ export default ({ setIndex, blocks, index }) => (
     <p>There is literature</p>
   </React.Fragment>
 );
+
+export default Results;
