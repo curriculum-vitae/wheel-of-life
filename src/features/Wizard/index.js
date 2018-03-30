@@ -1,4 +1,4 @@
-import { compose, withProps, withState } from 'recompose';
+import { compose, withProps, withState, withStateHandlers } from 'recompose';
 
 import AppBar from 'features/AppBar';
 import { BLOCKS } from 'common/constants';
@@ -19,7 +19,16 @@ const StepButton = ({ ...props }) => (
   />
 );
 
-const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLastStep }) => (
+const Component = ({
+  match,
+  blocks,
+  index,
+  setBlocks,
+  setIndex,
+  isFinished,
+  isLastStep,
+  updateBlockWithValue
+}) => (
   <React.Fragment>
     <div
       style={{
@@ -41,16 +50,7 @@ const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLa
         ) : (
           <Question
             block={blocks[index]}
-            onChange={value => {
-              setBlocks([
-                ...blocks.slice(0, index),
-                {
-                  ...blocks[index],
-                  value: value
-                },
-                ...blocks.slice(index + 1, blocks.length)
-              ]);
-            }}
+            onChange={value => updateBlockWithValue({ index, value })}
           />
         )}
         <React.Fragment>
@@ -63,7 +63,13 @@ const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLa
             <StepButton onClick={() => setIndex(index - 1)} disabled={index === 0}>
               prev
             </StepButton>
-            <StepButton disabled={isFinished} onClick={() => setIndex(index + 1)}>
+            <StepButton
+              disabled={isFinished}
+              onClick={() => {
+                updateBlockWithValue({ index, value: 0 });
+                setIndex(index + 1);
+              }}
+            >
               skip
             </StepButton>
             {isLastStep ? (
@@ -82,6 +88,18 @@ const Component = ({ match, blocks, index, setBlocks, setIndex, isFinished, isLa
 
 export default compose(
   withState('blocks', 'setBlocks', BLOCKS),
+  withStateHandlers(null, {
+    updateBlockWithValue: (state, { setBlocks, blocks }) => ({ index, value }) => {
+      setBlocks([
+        ...blocks.slice(0, index),
+        {
+          ...blocks[index],
+          value: value
+        },
+        ...blocks.slice(index + 1, blocks.length)
+      ]);
+    }
+  }),
   withState('index', 'setIndex', 0),
   withProps(props => ({
     isLastStep: props.index === props.blocks.length - 1,
