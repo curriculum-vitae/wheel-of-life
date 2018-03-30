@@ -8,6 +8,6 @@ import registerServiceWorker from 'registerServiceWorker.js';
 import typographyTheme from 'typography-theme-lincoln';
 
 const typography = new Typography(typographyTheme);
-typography.injectStyles();
+// typography.injectStyles();
 
 ReactDOM.render(<App />, document.getElementById('root'));
