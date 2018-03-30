@@ -17,21 +17,31 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <Wheel blocks={blocks} />
     </div>
     <br />
-    <Link to={'/quiz'}>
-      <button>Start again</button>
-    </Link>
-    <br />
-    <Link to={'/'}>
-      <button>Main page</button>
-    </Link>
-    <br />
-    <Share blocks={blocks} />
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center'
+      }}
+    >
+      <div style={{ width: '40%' }}>
+        <h3>Actions</h3>
+        <Link to={'/quiz'}>
+          <button>Start again</button>
+        </Link>
+        <Link to={'/'}>
+          <button>Visit main page</button>
+        </Link>
+        <h3>Sharing</h3>
 
-    <h1>What is next?</h1>
-    <p>Find what sphere are lacking your attention.</p>
-    <p>Go fix</p>
-    <p>There are coaches</p>
-    <p>There is literature</p>
+        <Share blocks={blocks} />
+        <h3>What is next?</h3>
+
+        <p>Find what sphere are lacking your attention.</p>
+        <p>Go fix</p>
+        <p>There are coaches</p>
+        <p>There is literature</p>
+      </div>
+    </div>
   </React.Fragment>
 );
 
