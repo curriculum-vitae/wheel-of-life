@@ -1,10 +1,12 @@
+import { compose, withProps } from 'recompose';
+
 import { Link } from 'react-router-dom';
 import React from 'react';
 import Share from 'features/Share';
 import Wheel from 'features/Wheel';
-import { compose } from 'recompose';
+import { decodeStateFromString } from 'common/helpers';
 
-const Results = ({ setIndex = () => {}, blocks = [], index = 0 }) => (
+const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
   <React.Fragment>
     <div
       style={{
@@ -31,4 +33,8 @@ const Results = ({ setIndex = () => {}, blocks = [], index = 0 }) => (
   </React.Fragment>
 );
 
-export default Results;
+export default compose(
+  withProps(props => ({
+    blocks: decodeStateFromString(props.match.params.state).blocks
+  }))
+)(Results);

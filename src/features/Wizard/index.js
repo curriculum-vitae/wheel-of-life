@@ -79,9 +79,13 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
               prev
             </StepButton>
             <StepButton onClick={() => setIndex(index + 1)}>skip</StepButton>
-            <StepButton onClick={() => setIndex(index + 1)}>
-              {index === blocks.length - 1 ? 'Finish' : 'Next'}
-            </StepButton>
+            {index === blocks.length - 1 ? (
+              <Link to={`/results/${encodeStateToString({ blocks })}`}>
+                <StepButton onClick={() => setIndex(index + 1)}>FINISH</StepButton>
+              </Link>
+            ) : (
+              <StepButton onClick={() => setIndex(index + 1)}>NEXT</StepButton>
+            )}
           </div>
         </React.Fragment>
       </React.Fragment>
