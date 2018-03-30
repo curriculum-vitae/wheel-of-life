@@ -1,5 +1,6 @@
 import { Link, Redirect } from 'react-router-dom';
 import { compose, withProps, withState } from 'recompose';
+import { convertBlocksToHash, convertMatchToData } from 'features/Wizard/helpers';
 import { decodeStateFromString, encodeStateToString } from 'common/helpers';
 import { flow, reduce, sortBy } from 'lodash/fp';
 
@@ -10,16 +11,6 @@ import React from 'react';
 import Results from 'features/Results';
 import Share from 'features/Share';
 import Wheel from 'features/Wheel';
-
-const convertMatchToData = match => {
-  const str = match.params.state;
-  return decodeStateFromString(str);
-};
-
-const convertBlocksToHash = flow(
-  sortBy('name'),
-  reduce((hash, block) => hash + block.name + block.value, '')
-);
 
 const StepButton = ({ ...props }) => (
   <button
