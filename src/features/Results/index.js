@@ -6,8 +6,22 @@ import Share from 'features/Share';
 import Wheel from 'features/Wheel';
 import { decodeStateFromString } from 'common/helpers';
 
+const Column = ({ children }) => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center'
+    }}
+  >
+    <div style={{ width: '40%' }}>{children}</div>
+  </div>
+);
+
 const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
   <React.Fragment>
+    <Column>
+      <h3>Results</h3>
+    </Column>
     <div
       style={{
         display: 'flex',
@@ -17,31 +31,24 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <Wheel blocks={blocks} />
     </div>
     <br />
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center'
-      }}
-    >
-      <div style={{ width: '40%' }}>
-        <h3>Actions</h3>
-        <Link to={'/quiz'}>
-          <button>Start again</button>
-        </Link>
-        <Link to={'/'}>
-          <button>Visit main page</button>
-        </Link>
-        <h3>Sharing</h3>
+    <Column>
+      <h3>Actions</h3>
+      <Link to={'/quiz'}>
+        <button>Start again</button>
+      </Link>
+      <Link to={'/'}>
+        <button>Visit main page</button>
+      </Link>
+      <h3>Sharing</h3>
 
-        <Share blocks={blocks} />
-        <h3>What is next?</h3>
+      <Share blocks={blocks} />
+      <h3>What is next?</h3>
 
-        <p>Find what sphere are lacking your attention.</p>
-        <p>Go fix</p>
-        <p>There are coaches</p>
-        <p>There is literature</p>
-      </div>
-    </div>
+      <p>Find what sphere are lacking your attention.</p>
+      <p>Go fix</p>
+      <p>There are coaches</p>
+      <p>There is literature</p>
+    </Column>
   </React.Fragment>
 );
 
