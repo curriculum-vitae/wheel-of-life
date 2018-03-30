@@ -21,19 +21,7 @@ class App extends Component {
         <React.Fragment>
           <Switch>
             <Route path={'/'} exact={true} component={Welcome} />
-            <Route
-              path={'/quiz'}
-              exact={true}
-              render={() => (
-                <Redirect
-                  to={`/quiz/${encodeStateToString({
-                    blocks: BLOCKS,
-                    index: 0
-                  })}`}
-                />
-              )}
-            />
-            <Route path={'/quiz/:state'} component={Wizard} />
+            <Route path={'/quiz'} exact={true} component={Wizard} />
           </Switch>
         </React.Fragment>
       </Router>

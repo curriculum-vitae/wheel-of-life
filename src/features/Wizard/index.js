@@ -4,6 +4,7 @@ import { decodeStateFromString, encodeStateToString } from 'common/helpers';
 import { flow, reduce, sortBy } from 'lodash/fp';
 
 import AppBar from 'features/AppBar';
+import { BLOCKS } from 'common/constants';
 import Question from 'features/Question';
 import React from 'react';
 import Share from 'features/Share';
@@ -18,18 +19,6 @@ const convertBlocksToHash = flow(
   sortBy('name'),
   reduce((hash, block) => hash + block.name + block.value, '')
 );
-
-const isInSync = ({ match, blocks, index }) => {
-  const decoded = convertMatchToData(match);
-  if (decoded.index !== index) return false;
-  if (convertBlocksToHash(decoded.blocks) !== convertBlocksToHash(blocks)) return false;
-  return true;
-};
-
-const Sync = ({ match, blocks, index }) =>
-  isInSync({ match, blocks, index }) ? null : (
-    <Redirect to={`/quiz/${encodeStateToString({ blocks, index })}`} />
-  );
 
 const StepButton = ({ ...props }) => (
   <button
@@ -123,21 +112,10 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
           <p>There is literature</p>
         </React.Fragment>
       )}
-      <br />
-
-      <Sync match={match} blocks={blocks} index={index} />
     </div>
   </React.Fragment>
 );
 
-export default compose(
-  withState('blocks', 'setBlocks', ({ match }) => {
-    console.log(match);
-    const { blocks } = convertMatchToData(match);
-    return blocks;
-  }),
-  withState('index', 'setIndex', ({ match }) => {
-    const { index } = convertMatchToData(match);
-    return index;
-  })
-)(Component);
+export default compose(withState('blocks', 'setBlocks', BLOCKS), withState('index', 'setIndex', 0))(
+  Component
+);
