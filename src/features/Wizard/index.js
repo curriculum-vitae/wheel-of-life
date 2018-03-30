@@ -50,7 +50,10 @@ const Component = ({
         ) : (
           <Question
             block={blocks[index]}
-            onChange={value => updateBlockWithValue({ index, value })}
+            onChange={value => {
+              updateBlockWithValue({ index, value });
+              setIndex(index + 1);
+            }}
           />
         )}
         <React.Fragment>
