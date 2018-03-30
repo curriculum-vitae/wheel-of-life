@@ -3,6 +3,7 @@ import { compose, withProps, withState } from 'recompose';
 import { decodeStateFromString, encodeStateToString } from 'common/helpers';
 import { flow, reduce, sortBy } from 'lodash/fp';
 
+import AppBar from 'features/AppBar';
 import Question from 'features/Question';
 import React from 'react';
 import Share from 'features/Share';
@@ -56,21 +57,11 @@ const Component = ({ match, blocks, index, setBlocks, setIndex }) => (
         transition: 'background-color 0.8s'
       }}
     >
+      <AppBar />
       <br />
       <br />
       <br />
-      <Link to={'/'}>
-        <h1
-          style={{
-            margin: '0px',
-            textAlign: 'center',
 
-            color: 'white'
-          }}
-        >
-          Wheel of Life
-        </h1>
-      </Link>
       {index < blocks.length ? (
         <React.Fragment>
           <br />
