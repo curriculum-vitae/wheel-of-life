@@ -39,7 +39,7 @@ const Component = ({
       <Progress
         success
         progress
-        percent={Math.floor(100 * index / blocks.length)}
+        percent={Math.ceil(100 * index / (blocks.length - 1))}
       />
 
       <AppBar />
