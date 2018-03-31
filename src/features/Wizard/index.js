@@ -1,13 +1,13 @@
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import AppBar from 'features/AppBar'
-import { BLOCKS } from 'common/constants'
+import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Progress } from 'semantic-ui-react'
 import Question from 'features/Question'
 import React from 'react'
-import { encodeStateToString } from 'common/helpers'
+import { encodeStateToString } from 'utils/helpers'
 
 const StepButton = ({ ...props }) => <Button size={'huge'} {...props} />
 

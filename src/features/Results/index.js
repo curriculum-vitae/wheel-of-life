@@ -1,21 +1,20 @@
-import { compose, withProps } from 'recompose';
+import { compose, withProps } from 'recompose'
 
-import { Link } from 'react-router-dom';
-import React from 'react';
-import Share from 'features/Share';
-import Wheel from 'features/Wheel';
-import { decodeStateFromString } from 'common/helpers';
+import { Link } from 'react-router-dom'
+import React from 'react'
+import Share from 'features/Share'
+import Wheel from 'features/Wheel'
+import { decodeStateFromString } from 'utils/helpers'
 
 const Column = ({ children }) => (
   <div
     style={{
       display: 'flex',
-      justifyContent: 'center'
-    }}
-  >
+      justifyContent: 'center',
+    }}>
     <div style={{ width: '40%' }}>{children}</div>
   </div>
-);
+)
 
 const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
   <React.Fragment>
@@ -25,9 +24,8 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <div
       style={{
         display: 'flex',
-        justifyContent: 'center'
-      }}
-    >
+        justifyContent: 'center',
+      }}>
       <Wheel blocks={blocks} />
     </div>
     <br />
@@ -50,10 +48,10 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <p>There is literature</p>
     </Column>
   </React.Fragment>
-);
+)
 
 export default compose(
   withProps(props => ({
-    blocks: decodeStateFromString(props.match.params.state).blocks
-  }))
-)(Results);
+    blocks: decodeStateFromString(props.match.params.state).blocks,
+  })),
+)(Results)

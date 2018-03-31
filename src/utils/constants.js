@@ -10,7 +10,7 @@ import {
   purple,
   red,
   yellow,
-} from 'common/colors'
+} from 'utils/colors'
 
 const SHADE = 700
 

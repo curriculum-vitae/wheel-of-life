@@ -1,34 +1,35 @@
-import { compose, find, flow, map } from 'lodash/fp';
+import { compose, find, flow, map } from 'lodash/fp'
 
-import { BLOCKS } from 'common/constants';
-import { OrdinalFrame } from 'semiotic';
-import React from 'react';
-import { SAMPLE_WIND_ROSE_DATA } from 'features/Wheel/constants';
-import { setDisplayName } from 'recompose';
+import { BLOCKS } from 'utils/constants'
+import { OrdinalFrame } from 'semiotic'
+import React from 'react'
+import { SAMPLE_WIND_ROSE_DATA } from 'features/Wheel/constants'
+import { setDisplayName } from 'recompose'
 
-const mapPropsToQueries = () => [];
+const mapPropsToQueries = () => []
 
 const convertBlocksToWindRoseData = blocks => {
-  const STEP = 360 / blocks.length;
+  const STEP = 360 / blocks.length
   return flow(
     map(block => ({
       label: block.name,
-      angle: `${STEP * blocks.indexOf(block)} - ${STEP * (blocks.indexOf(block) + 1)}`,
-      value: block.value
-    }))
-  )(blocks);
-};
+      angle: `${STEP * blocks.indexOf(block)} - ${STEP *
+        (blocks.indexOf(block) + 1)}`,
+      value: block.value,
+    })),
+  )(blocks)
+}
 
-const SIZE = 500;
+const SIZE = 500
 
-const getColor = label => flow(find(block => block.name === label), block => block.color)(BLOCKS);
+const getColor = label =>
+  flow(find(block => block.name === label), block => block.color)(BLOCKS)
 
 const Component = ({ blocks }) => (
   <div
     style={{
-      marginLeft: `-${SIZE}px`
-    }}
-  >
+      marginLeft: `-${SIZE}px`,
+    }}>
     <OrdinalFrame
       size={[SIZE, SIZE]}
       data={convertBlocksToWindRoseData(blocks)}
@@ -38,19 +39,19 @@ const Component = ({ blocks }) => (
       type={'bar'}
       projection={'radial'}
       axis={{
-        label: { name: 'Windiness', locationDistance: 5 }
+        label: { name: 'Windiness', locationDistance: 5 },
       }}
       oPadding={1}
       margin={{ bottom: 20, top: 20, left: 20, right: 20 }}
       hoverAnnotation={true}
     />
   </div>
-);
+)
 
 const mapStateToProps = state => {
-  return {};
-};
+  return {}
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default compose(setDisplayName('DefaultComponentName'))(Component);
+export default compose(setDisplayName('DefaultComponentName'))(Component)

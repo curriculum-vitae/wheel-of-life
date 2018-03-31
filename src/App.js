@@ -1,10 +1,16 @@
 import 'App.css'
 
-import { Link, Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import {
+  Link,
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from 'react-router-dom'
 import React, { Component } from 'react'
-import { decodeStateFromString, encodeStateToString } from 'common/helpers'
+import { decodeStateFromString, encodeStateToString } from 'utils/helpers'
 
-import { BLOCKS } from 'common/constants'
+import { BLOCKS } from 'utils/constants'
 import Question from 'features/Question'
 import Results from 'features/Results'
 import Welcome from 'features/Welcome'
