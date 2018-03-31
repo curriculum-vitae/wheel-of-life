@@ -2,22 +2,14 @@ import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import AppBar from 'features/AppBar'
 import { BLOCKS } from 'common/constants'
+import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Progress } from 'semantic-ui-react'
 import Question from 'features/Question'
 import React from 'react'
 import { encodeStateToString } from 'common/helpers'
 
-const StepButton = ({ ...props }) => (
-  <button
-    style={{
-      cursor: 'pointer',
-      width: '60px',
-      height: '60px',
-    }}
-    {...props}
-  />
-)
+const StepButton = ({ ...props }) => <Button size={'huge'} {...props} />
 
 const Component = ({
   match,
@@ -67,12 +59,14 @@ const Component = ({
           <div
             style={{
               display: 'flex',
+              padding: '0px 40px',
+              marginTop: '100px',
               justifyContent: 'space-between',
             }}>
             <StepButton
               onClick={() => setIndex(index - 1)}
               disabled={index === 0}>
-              prev
+              Back
             </StepButton>
             <StepButton
               disabled={isFinished}
@@ -80,16 +74,16 @@ const Component = ({
                 updateBlockWithValue({ index, value: 0 })
                 setIndex(index + 1)
               }}>
-              skip
+              Skip
             </StepButton>
             {isLastStep ? (
               <Link to={`/results/${encodeStateToString({ blocks })}`}>
                 <StepButton onClick={() => setIndex(index + 1)}>
-                  FINISH
+                  Show results
                 </StepButton>
               </Link>
             ) : (
-              <StepButton onClick={() => setIndex(index + 1)}>NEXT</StepButton>
+              <StepButton onClick={() => setIndex(index + 1)}>Next</StepButton>
             )}
           </div>
         </React.Fragment>
