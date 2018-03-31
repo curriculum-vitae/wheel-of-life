@@ -1,6 +1,8 @@
 import { Button } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 import React from 'react'
 import copy from 'copy-to-clipboard'
+
 const createShareURL = ({ blocks } = {}) => {
   return window.location.href
 }
@@ -20,21 +22,30 @@ const createTwitterShareURL = () => {
 
 export default ({ blocks }) => (
   <div>
-    <input
+    <Input
+      style={{
+        width: '100%',
+      }}
+      action={<Button onClick={() => runCopy()}>copy</Button>}
       onClick={() => runCopy()}
       value={createShareURL()}
       onChange={() => {}}
     />
-    <button onClick={() => runCopy()}>COPY</button>
+
     <br />
     <br />
-    <a target={'_blank'} href={createFacebookShareURL()}>
-      <Button color={'facebook'}>FaceBook</Button>
-    </a>
-    <br />
-    <br />
-    <a target={'_blank'} href={createTwitterShareURL()}>
-      <Button color={'twitter'}>Twitter</Button>
-    </a>
+    <div
+      style={{
+        display: 'flex',
+      }}>
+      <a target={'_blank'} href={createFacebookShareURL()}>
+        <Button color={'facebook'}>FaceBook</Button>
+      </a>
+      <br />
+      <br />
+      <a target={'_blank'} href={createTwitterShareURL()}>
+        <Button color={'twitter'}>Twitter</Button>
+      </a>
+    </div>
   </div>
 )
