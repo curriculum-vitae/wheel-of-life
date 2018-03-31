@@ -10,10 +10,7 @@
     "react-router-dom": "4.2.2",
     "recompose": "0.26.0",
     "semantic-ui-react": "0.79.0",
-    "semiotic": "1.9.1",
-    "typography": "0.16.6",
-    "typography-theme-lincoln": "0.15.11",
-    "typography-theme-ocean-beach": "0.15.11"
+    "semiotic": "1.9.1"
   },
   "devDependencies": {
     "react-scripts": "1.1.1"
