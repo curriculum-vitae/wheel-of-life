@@ -6,7 +6,7 @@ export default ({ color = 'white' }) => (
     style={{
       height: '64px',
       padding: '12px 20px',
-      borderBottom: '1px solid grey',
+      borderBottom: '1px solid white',
     }}>
     <Link to={'/'}>
       <h2
