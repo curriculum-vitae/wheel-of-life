@@ -26,15 +26,18 @@ const Component = ({
       style={{
         height: '100vh',
         backgroundColor: index < blocks.length ? blocks[index].color : 'white',
-        transition: 'background-color 0.8s',
+        transition: 'background-color 1.0s',
       }}>
+      <AppBar />
       <Progress
+        style={{
+          margin: '0px',
+          borderRadius: '0',
+        }}
         success
         progress
         percent={Math.ceil(100 * index / (blocks.length - 1))}
       />
-
-      <AppBar />
       <br />
       <br />
       <br />

@@ -9,13 +9,13 @@ export default ({ color = 'white' }) => (
       borderBottom: '1px solid grey',
     }}>
     <Link to={'/'}>
-      <h1
+      <h2
         style={{
-          margin: '0px',
+          margin: '6px',
           color,
         }}>
         Wheel of Life
-      </h1>
+      </h2>
     </Link>
   </div>
 )
