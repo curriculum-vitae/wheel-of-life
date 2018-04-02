@@ -1,5 +1,6 @@
 import { Button, Grid } from 'semantic-ui-react'
 
+import AppBar from 'features/AppBar'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
@@ -10,23 +11,87 @@ const Point = ({ title, text }) => (
   </div>
 )
 
+const AttentionBox = () => (
+  <div
+    style={{
+      textAlign: 'center',
+      backgroundColor: 'red',
+      color: 'white',
+      width: '40%',
+      padding: '40px',
+    }}>
+    <h1>I’ve tried it for myself. It changed my left. </h1>
+
+    <h1>
+      It might not work for you. You are two minutes away to figure this out.
+    </h1>
+  </div>
+)
+
 export default () => (
   <div>
-    <h1 style={{ textAlign: 'center', fontSize: '60px' }}>Well hello</h1>
-
-    <h3 style={{ textAlign: 'center' }}>Whant to balance your life?</h3>
-    <div style={{ textAlign: 'center' }}>
-      <Link to={'/quiz'}>
-        <Button>Start</Button>
-      </Link>
+    <AppBar color={'black'} />
+    <br />
+    <br />
+    <br />
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+      <AttentionBox />
     </div>
-    <Grid columns={1}>
+
+    <Grid columns={2} relaxed={0}>
       <Grid.Column>
-        <Point title={'What is here?'} text={'A tool to improve your life'} />
+        <h1 style={{ textAlign: 'center', fontSize: '60px' }}>
+          Problem definition
+        </h1>
+        <p
+          style={{
+            padding: '60px',
+          }}>
+          Life happens to be imbalance. It will cause troubles.
+        </p>
       </Grid.Column>
       <Grid.Column>
-        <Point title={'Why is this?'} text={'It just 1 minute.'} />
+        <img
+          style={{
+            width: '100%',
+          }}
+          alt={'Background'}
+          src={'https://www.w3schools.com/howto/img_fjords.jpg'}
+        />
       </Grid.Column>
     </Grid>
+
+    <Grid columns={2}>
+      <Grid.Column>
+        <img
+          style={{
+            width: '100%',
+          }}
+          alt={'Background'}
+          src={'https://www.w3schools.com/howto/img_fjords.jpg'}
+        />
+      </Grid.Column>
+      <Grid.Column>
+        <h1 style={{ textAlign: 'center', fontSize: '60px' }}>Solution</h1>
+        <p
+          style={{
+            padding: '60px',
+          }}>
+          > Nope. We don’t have it. Good solution is a matter of good questions.
+          What we have is 10 good questions. Rest is yours job.
+        </p>
+      </Grid.Column>
+    </Grid>
+    <div style={{ textAlign: 'center', marginTop: '80px', padding: '40px' }}>
+      <Link to={'/quiz'}>
+        <Button color={'orange'} size={'massive'}>
+          Start questioning your life
+        </Button>
+      </Link>
+    </div>
   </div>
 )
