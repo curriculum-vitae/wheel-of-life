@@ -17,6 +17,7 @@ export default class BarChart extends Component {
 
   createBarChart = () => {
     const data = this.props.data
+    const maxValue = 10
 
     const width = 960
     const height = 500
@@ -28,16 +29,15 @@ export default class BarChart extends Component {
       .append("g")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
-    const extent = d3.extent(data, d => d.value)
     const barScale = d3.scaleLinear()
-      .domain(extent)
+      .domain([0, maxValue])
       .range([0, barHeight])
 
     const keys = data.map(d => d.name)
     const numBars = keys.length
 
     const x = d3.scaleLinear()
-      .domain(extent)
+      .domain([0, maxValue])
       .range([0, -barHeight])
 
     const xAxis = d3.axisLeft()
