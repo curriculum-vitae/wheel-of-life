@@ -1,10 +1,13 @@
-import { compose, find, flow, map } from 'lodash/fp'
-
-import { BLOCKS } from 'utils/constants'
-import { OrdinalFrame } from 'semiotic'
+import {
+  compose,
+  find,
+  flow,
+  map
+} from 'lodash/fp'
 import React from 'react'
-import { SAMPLE_WIND_ROSE_DATA } from 'features/Wheel/constants'
 import { setDisplayName } from 'recompose'
+import { BLOCKS } from 'utils/constants'
+import BarChart from './BarChart'
 
 const mapPropsToQueries = () => []
 
@@ -14,7 +17,7 @@ const convertBlocksToWindRoseData = blocks => {
     map(block => ({
       label: block.name,
       angle: `${STEP * blocks.indexOf(block)} - ${STEP *
-        (blocks.indexOf(block) + 1)}`,
+      (blocks.indexOf(block) + 1)}`,
       value: block.value,
     })),
   )(blocks)
@@ -26,26 +29,7 @@ const getColor = label =>
   flow(find(block => block.name === label), block => block.color)(BLOCKS)
 
 const Component = ({ blocks }) => (
-  <div
-    style={{
-      marginLeft: `-${SIZE}px`,
-    }}>
-    <OrdinalFrame
-      size={[SIZE, SIZE]}
-      data={convertBlocksToWindRoseData(blocks)}
-      oAccessor={'label'}
-      rAccessor={'value'}
-      style={d => ({ fill: getColor(d.label) })}
-      type={'bar'}
-      projection={'radial'}
-      axis={{
-        label: { name: 'Windiness', locationDistance: 5 },
-      }}
-      oPadding={1}
-      margin={{ bottom: 20, top: 20, left: 20, right: 20 }}
-      hoverAnnotation={true}
-    />
-  </div>
+  <BarChart data={blocks} />
 )
 
 const mapStateToProps = state => {

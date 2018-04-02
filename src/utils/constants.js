@@ -26,7 +26,7 @@ export const BLOCKS = [
     value: 0,
   },
   {
-    name: 'Carreer',
+    name: 'Career',
     color: pink[SHADE],
     value: 0,
   },
