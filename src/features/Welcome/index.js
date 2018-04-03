@@ -55,9 +55,7 @@ export default () => (
             padding: '0px',
           }}>
           <div style={{ padding: '40px' }}>
-            <h1 style={{ textAlign: 'center', fontSize: '60px' }}>
-              Problem definition
-            </h1>
+            <h1 style={{ textAlign: 'center', fontSize: '60px' }}>Problem?</h1>
             <h3>
               Life happens to be imbalance. Eventually it causes troubles.
             </h3>
@@ -100,7 +98,7 @@ export default () => (
                 textAlign: 'center',
                 fontSize: '60px',
               }}>
-              Solution
+              Solution!
             </h1>
             <h3>Nope. We don’t have it. But...</h3>
             <h3>
