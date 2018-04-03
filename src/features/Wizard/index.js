@@ -3,6 +3,7 @@ import { compose, withProps, withState, withStateHandlers } from 'recompose'
 import AppBar from 'features/AppBar'
 import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Progress } from 'semantic-ui-react'
 import Question from 'features/Question'
@@ -50,13 +51,17 @@ const Component = ({
             DONE
           </h1>
         ) : (
-          <Question
-            block={blocks[index]}
-            onChange={value => {
-              updateBlockWithValue({ index, value })
-              setIndex(index + 1)
-            }}
-          />
+          <Grid centered columns={1}>
+            <Grid.Column mobile={14} tablet={10} computer={8}>
+              <Question
+                block={blocks[index]}
+                onChange={value => {
+                  updateBlockWithValue({ index, value })
+                  setIndex(index + 1)
+                }}
+              />
+            </Grid.Column>
+          </Grid>
         )}
         <React.Fragment>
           <div
