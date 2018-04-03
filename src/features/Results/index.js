@@ -3,7 +3,7 @@ import { compose, withProps } from 'recompose'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import Share from 'features/Share'
-import Wheel from 'features/Wheel'
+import { Wheel } from 'features/Wheel'
 import { decodeStateFromString } from 'utils/helpers'
 
 const Column = ({ children }) => (
