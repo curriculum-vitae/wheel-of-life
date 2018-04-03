@@ -45,14 +45,27 @@ const Component = ({
       <React.Fragment>
         <br />
         <br />
-        {isFinished ? (
-          <h1
-            style={{ textAlign: 'center', fonstSize: '60px', color: 'white' }}>
-            DONE
-          </h1>
-        ) : (
-          <Grid centered columns={1}>
-            <Grid.Column mobile={14} tablet={10} computer={8}>
+        <Grid centered columns={1}>
+          <Grid.Column mobile={14} tablet={10} computer={8}>
+            {isFinished ? (
+              <div>
+                <h1
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '60px',
+                    color: 'white',
+                  }}>
+                  DONE!
+                </h1>
+                <StepButton
+                  fluid
+                  as={Link}
+                  to={`/results/${encodeStateToString({ blocks })}`}
+                  onClick={() => setIndex(index + 1)}>
+                  Show results
+                </StepButton>
+              </div>
+            ) : (
               <Question
                 block={blocks[index]}
                 onChange={value => {
@@ -60,41 +73,39 @@ const Component = ({
                   setIndex(index + 1)
                 }}
               />
-            </Grid.Column>
-          </Grid>
-        )}
-        <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              padding: '0px 40px',
-              marginTop: '100px',
-              justifyContent: 'space-between',
-            }}>
-            <StepButton
-              onClick={() => setIndex(index - 1)}
-              disabled={index === 0}>
-              Back
-            </StepButton>
-            <StepButton
-              disabled={isFinished}
-              onClick={() => {
-                updateBlockWithValue({ index, value: 0 })
-                setIndex(index + 1)
-              }}>
-              Skip
-            </StepButton>
-            {isLastStep ? (
-              <Link to={`/results/${encodeStateToString({ blocks })}`}>
-                <StepButton onClick={() => setIndex(index + 1)}>
-                  Show results
-                </StepButton>
-              </Link>
-            ) : (
-              <StepButton onClick={() => setIndex(index + 1)}>Next</StepButton>
             )}
-          </div>
-        </React.Fragment>
+            <React.Fragment>
+              <div
+                style={{
+                  marginTop: '40px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}>
+                <StepButton
+                  fluid
+                  onClick={() => setIndex(index - 1)}
+                  disabled={index === 0}>
+                  Back
+                </StepButton>
+                <StepButton
+                  fluid
+                  disabled={isFinished}
+                  onClick={() => {
+                    updateBlockWithValue({ index, value: 0 })
+                    setIndex(index + 1)
+                  }}>
+                  Skip
+                </StepButton>
+                <StepButton
+                  disabled={isLastStep}
+                  fluid
+                  onClick={() => setIndex(index + 1)}>
+                  Next
+                </StepButton>
+              </div>
+            </React.Fragment>
+          </Grid.Column>
+        </Grid>
       </React.Fragment>
     </div>
   </React.Fragment>

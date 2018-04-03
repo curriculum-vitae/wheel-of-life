@@ -40,8 +40,10 @@ export default ({ block, onChange = () => {} }) => (
       <Button.Group size={'large'} fluid>
         {times(index => (
           <Button
-            primary={block.value === index + 1}
             key={index + 1}
+            primary={block.value === index + 1}
+            active={false}
+            compact
             onClick={() => onChange(index + 1)}>
             {index + 1}
           </Button>
