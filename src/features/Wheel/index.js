@@ -38,9 +38,9 @@ const updateChart = ({ refs, blocks }) => {
     .attr('r', function(d) {
       return barScale(d)
     })
-    .style('fill', '#f6f6ee')
-    .style('stroke', '#aaaaaa')
-    .style('stroke-dasharray', '2,2')
+    .style('fill', 'none')
+    .style('stroke', '#a7aaa9')
+    .style('stroke-dasharray', '1,3')
     .style('stroke-width', '.5px')
 
   const arc = d3
