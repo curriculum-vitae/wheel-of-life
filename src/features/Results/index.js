@@ -1,5 +1,6 @@
 import { compose, withProps } from 'recompose'
 
+import AppBar from 'features/AppBar'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import Share from 'features/Share'
@@ -18,8 +19,10 @@ const Column = ({ children }) => (
 
 const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
   <React.Fragment>
+    <AppBar color={'black'} />
+    <br />
     <Column>
-      <h3>Results</h3>
+      <h2>Results</h2>
     </Column>
     <div
       style={{
@@ -30,17 +33,17 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     </div>
     <br />
     <Column>
-      <h3>Actions</h3>
+      <h2>Actions</h2>
       <Link to={'/quiz'}>
         <button>Start again</button>
       </Link>
       <Link to={'/'}>
         <button>Visit main page</button>
       </Link>
-      <h3>Sharing</h3>
+      <h2>Sharing</h2>
 
       <Share blocks={blocks} />
-      <h3>What is next?</h3>
+      <h2>What is next?</h2>
 
       <p>Find what sphere are lacking your attention.</p>
       <p>Go fix</p>
