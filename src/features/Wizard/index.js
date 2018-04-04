@@ -41,11 +41,15 @@ const Component = ({
       <br />
       <br />
       <br />
+      <br />
+      <br />
       <React.Fragment>
-        <br />
-        <br />
         <Grid centered columns={1}>
-          <Grid.Column mobile={14} tablet={10} computer={8}>
+          <Grid.Column
+            mobile={14}
+            tablet={10}
+            computer={8}
+            style={{ maxWidth: '600px' }}>
             {isFinished ? (
               <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
             ) : (
