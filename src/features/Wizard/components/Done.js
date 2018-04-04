@@ -1,12 +1,13 @@
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react'
 
-import { Link } from 'react-router-dom';
-import React from 'react';
+import { Link } from 'react-router-dom'
+import React from 'react'
 import { encodeStateToString } from 'utils/helpers'
 
-const WizardDone = ({ setIndex, index, blocks }) => (<div>
-    <div style={{ textAlign: 'center'}}>
-    <Icon size={'huge'} style={{ color: 'white' }} name={'checkmark'} />
+const WizardDone = ({ setIndex, index, blocks }) => (
+  <div>
+    <div style={{ textAlign: 'center' }}>
+      <Icon size={'huge'} style={{ color: 'white' }} name={'checkmark'} />
     </div>
     <h1
       style={{
@@ -24,9 +25,7 @@ const WizardDone = ({ setIndex, index, blocks }) => (<div>
       onClick={() => setIndex(index + 1)}>
       Show results
     </Button>
-  </div>)
+  </div>
+)
 
-
-
-
-export { WizardDone} 
+export { WizardDone }
