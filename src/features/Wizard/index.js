@@ -1,14 +1,13 @@
-import { Grid, Icon } from 'semantic-ui-react'
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import AppBar from 'features/AppBar'
 import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Grid } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
 import Question from 'features/Question'
 import React from 'react'
-import { encodeStateToString } from 'utils/helpers'
+import { WizardDone } from 'features/Wizard/components/Done';
 
 const StepButton = ({ ...props }) => <Button size={'huge'} {...props} />
 
@@ -48,24 +47,7 @@ const Component = ({
         <Grid centered columns={1}>
           <Grid.Column mobile={14} tablet={10} computer={8}>
             {isFinished ? (
-              <div>
-                <Icon name={'checkmark'} />
-                <h1
-                  style={{
-                    textAlign: 'center',
-                    fontSize: '60px',
-                    color: 'white',
-                  }}>
-                  DONE!
-                </h1>
-                <StepButton
-                  fluid
-                  as={Link}
-                  to={`/results/${encodeStateToString({ blocks })}`}
-                  onClick={() => setIndex(index + 1)}>
-                  Show results
-                </StepButton>
-              </div>
+              <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
             ) : (
               <Question
                 block={blocks[index]}
