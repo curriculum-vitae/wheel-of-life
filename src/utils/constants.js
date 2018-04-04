@@ -18,48 +18,48 @@ export const BLOCKS = [
   {
     name: 'Health',
     color: red[SHADE],
-    value: 0,
+    value: 5,
   },
   {
     name: 'Family',
     color: blue[SHADE],
-    value: 0,
+    value: 10,
   },
   {
     name: 'Career',
     color: pink[SHADE],
-    value: 0,
+    value: 4,
   },
   {
     name: 'Personal development',
     color: yellow[SHADE],
-    value: 0,
+    value: 5,
   },
 
   {
     name: 'Partner',
     color: purple[SHADE],
-    value: 0,
+    value: 6,
   },
   {
     name: 'Spirituality',
     color: deepOrange[SHADE],
-    value: 0,
+    value: 5,
   },
   {
     name: 'Fun',
     color: brown[SHADE],
-    value: 0,
+    value: 5,
   },
   {
     name: 'Environment',
     color: green[SHADE],
-    value: 0,
+    value: 2,
   },
   {
     name: 'Finances',
     color: cyan[SHADE],
-    value: 0,
+    value: 1,
   },
   {
     name: 'Friends',
@@ -69,6 +69,6 @@ export const BLOCKS = [
   {
     name: 'Social',
     color: indigo[SHADE],
-    value: 0,
+    value: 10,
   },
 ]

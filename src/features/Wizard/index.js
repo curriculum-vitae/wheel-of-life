@@ -111,7 +111,7 @@ export default compose(
       ])
     },
   }),
-  withState('index', 'setIndex', 0),
+  withState('index', 'setIndex', BLOCKS.length - 2),
   withProps(props => ({
     isLastStep: props.index === props.blocks.length - 1,
     isFinished: props.index >= props.blocks.length - 1,
