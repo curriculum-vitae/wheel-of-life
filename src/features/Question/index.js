@@ -22,16 +22,24 @@ export default ({ block, onChange = () => {} }) => (
       }}>
       {block.name}
     </h2>
-    <List divided relaxed>
-      {DUMMY_SUBQUESTIONS.map(str => (
-        <List.Item key={str} color={'white'}>
-          <List.Icon name={'question'} size={'large'} verticalAlign="middle" />
-          <List.Content>
-            <List.Header>{str}</List.Header>
-          </List.Content>
-        </List.Item>
-      ))}
-    </List>
+    <div>
+      <List divided relaxed>
+        {DUMMY_SUBQUESTIONS.map(str => (
+          <List.Item key={str} color={'white'}>
+            <List.Icon
+              name={'question'}
+              size={'large'}
+              verticalAlign="middle"
+            />
+            <List.Content>
+              <List.Header>{str}</List.Header>
+            </List.Content>
+          </List.Item>
+        ))}
+      </List>
+    </div>
+    <br />
+
     <div
       style={{
         display: 'flex',
