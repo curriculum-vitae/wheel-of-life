@@ -5,7 +5,9 @@ import React from 'react';
 import { encodeStateToString } from 'utils/helpers'
 
 const WizardDone = ({ setIndex, index, blocks }) => (<div>
-    <Icon name={'checkmark'} />
+    <div style={{ textAlign: 'center'}}>
+    <Icon size={'huge'} style={{ color: 'white' }} name={'checkmark'} />
+    </div>
     <h1
       style={{
         textAlign: 'center',
@@ -15,7 +17,7 @@ const WizardDone = ({ setIndex, index, blocks }) => (<div>
       DONE!
     </h1>
     <Button
-        size={'huge'}
+      size={'huge'}
       fluid
       as={Link}
       to={`/results/${encodeStateToString({ blocks })}`}
