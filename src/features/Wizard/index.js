@@ -1,9 +1,9 @@
+import { Grid, Icon } from 'semantic-ui-react'
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import AppBar from 'features/AppBar'
 import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
-import { Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Progress } from 'semantic-ui-react'
 import Question from 'features/Question'
@@ -49,6 +49,7 @@ const Component = ({
           <Grid.Column mobile={14} tablet={10} computer={8}>
             {isFinished ? (
               <div>
+                <Icon name={'checkmark'} />
                 <h1
                   style={{
                     textAlign: 'center',
