@@ -1,6 +1,7 @@
 import { compose, withProps } from 'recompose'
 
 import AppBar from 'features/AppBar'
+import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import Share from 'features/Share'
@@ -35,10 +36,10 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <Column>
       <h2>Actions</h2>
       <Link to={'/quiz'}>
-        <button>Start again</button>
+        <Button>Start again</Button>
       </Link>
       <Link to={'/'}>
-        <button>Visit main page</button>
+        <Button>Visit main page</Button>
       </Link>
       <h2>Sharing</h2>
 
@@ -50,6 +51,10 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <p>There are coaches</p>
       <p>There is literature</p>
     </Column>
+    <br />
+    <br />
+    <br />
+    <br />
   </React.Fragment>
 )
 
