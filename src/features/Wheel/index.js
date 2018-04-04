@@ -1,5 +1,7 @@
 import * as d3 from 'd3'
+
 import { compose, lifecycle, setDisplayName, withProps } from 'recompose'
+
 import { RefsStore } from '../../utils/refsUtils'
 import { WheelChart } from './components/WheelChart'
 
