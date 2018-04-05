@@ -107,9 +107,6 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
         <Link to={'/quiz'}>
           <Button>Start again</Button>
         </Link>
-        <Link to={'/'}>
-          <Button>Visit main page</Button>
-        </Link>
       </React.Fragment>
       <Header>Sharing</Header>
 
