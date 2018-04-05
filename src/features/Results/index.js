@@ -8,6 +8,9 @@ import Share from 'features/Share'
 import { Wheel } from 'features/Wheel'
 import { decodeStateFromString } from 'utils/helpers'
 import { grey } from 'utils/colors'
+import { withContentRect } from 'react-measure'
+
+const PROPORTION_OF_WHEEL_ON_PAGE = 1
 
 const getAverage = ({ blocks }) => {
   return (
@@ -24,15 +27,19 @@ const mapAverageToGrade = average => {
   return 'ERROR'
 }
 
-const Column = ({ children }) => (
+const Column = ({ children, measureRef, ...props }) => (
   <div
     style={{
       display: 'flex',
       justifyContent: 'center',
-    }}>
+    }}
+    {...props}>
     <div
+      ref={measureRef}
       style={{
-        width: '48%',
+        margin: '0px 20px',
+        width: '100%',
+        maxWidth: '620px',
         padding: '14px 20px',
         borderRadius: '1px',
         backgroundColor: 'white',
@@ -86,7 +93,14 @@ const NextActions = compose(
   </React.Fragment>
 ))
 
-const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
+const Results = ({
+  setIndex = () => {},
+  blocks,
+  index = 0,
+  measureRef,
+  measure,
+  contentRect,
+}) => (
   <div
     style={{
       backgroundColor: grey[200],
@@ -94,11 +108,16 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <AppBar color={'black'} />
     <div style={{ height: '1px' }} />
     <br />
-    <Column>
+    <Column measureRef={measureRef}>
       <Header>Results</Header>
-      {/* Hacking */}
 
-      <Wheel height={600} width={600} blocks={blocks} />
+      {contentRect.entry && contentRect.entry.width ? (
+        <Wheel
+          height={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
+          width={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
+          blocks={blocks}
+        />
+      ) : null}
 
       <Header>What is next?</Header>
       <NextActions blocks={blocks} />
@@ -123,4 +142,5 @@ export default compose(
   withProps(props => ({
     blocks: decodeStateFromString(props.match.params.state).blocks,
   })),
+  withContentRect('bounds'),
 )(Results)
