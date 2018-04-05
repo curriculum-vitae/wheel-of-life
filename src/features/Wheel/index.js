@@ -5,11 +5,9 @@ import { compose, lifecycle, setDisplayName, withProps } from 'recompose'
 import { RefsStore } from '../../utils/refsUtils'
 import { WheelChart } from './components/WheelChart'
 
-const updateChart = ({ refs, blocks }) => {
+const updateChart = ({ refs, width = 500, height = 500, blocks }) => {
   const maxValue = 10
 
-  const width = 960
-  const height = 500
   const barHeight = height / 2 - 40
 
   const svg = d3
