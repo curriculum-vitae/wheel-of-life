@@ -86,14 +86,14 @@ export default () => (
               style={{
                 fontSize: '60px',
               }}>
-              And we have no solution
+              And we have NO solution
             </h1>
-            <h3>But...</h3>
+            <h3>But!</h3>
             <h3>
               Good solution is a matter of good questions. And this what we do
               have.
             </h3>
-            <br />
+            <h3>Remember, you're just two minutes away.</h3>
             <br />
             <br />
             <div style={{ textAlign: 'center' }}>
