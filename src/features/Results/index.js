@@ -97,9 +97,9 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <Column>
       <Header>Results</Header>
       {/* Hacking */}
-      <div style={{ marginLeft: '-140px' }}>
-        <Wheel blocks={blocks} />
-      </div>
+
+      <Wheel blocks={blocks} />
+
       <Header>What is next?</Header>
       <NextActions blocks={blocks} />
       <Header>Actions</Header>
