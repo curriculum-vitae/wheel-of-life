@@ -1,5 +1,7 @@
 import React from 'react'
+import './wheelChart.css'
 
 export const WheelChart = ({ refs }) => (
-  <svg ref={ref => refs.store('svg', ref)} />
+  <div ref={ref => refs.store('svg', ref)} id="container" className="svg-container">
+  </div>
 )
