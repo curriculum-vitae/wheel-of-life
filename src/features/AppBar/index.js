@@ -4,18 +4,19 @@ import { grey } from 'utils/colors'
 export default ({ color = 'white' }) => (
   <div
     style={{
-      height: '64px',
-      padding: '12px 20px',
+      height: '54px',
+      padding: '10px 14px',
       borderBottom: `1px solid rgba(255, 255, 255, .35)`,
     }}>
     <Link to={'/'}>
-      <h2
+      <h3
         style={{
           margin: '6px',
+          opacity: '0.9',
           color,
         }}>
         Wheel of Life
-      </h2>
+      </h3>
     </Link>
   </div>
 )
