@@ -13,11 +13,13 @@ const runCopy = () => {
 }
 
 const createFacebookShareURL = () => {
-  return 'http://fb.com'
+  const dest = createShareURL()
+  return `https://www.facebook.com/sharer/sharer.php?u=${dest}`
 }
 
 const createTwitterShareURL = () => {
-  return 'https://twitter.com'
+  const dest = createShareURL()
+  return `http://www.twitter.com/share?url=${dest}`
 }
 
 export default ({ blocks }) => (
