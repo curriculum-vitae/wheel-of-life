@@ -70,7 +70,7 @@ export default () => (
               width: '100%',
             }}
             alt={'Background'}
-            src={'https://www.w3schools.com/howto/img_fjords.jpg'}
+            src={'/images/main-1.jpg'}
           />
         </Grid.Column>
       </Grid.Row>
@@ -85,7 +85,7 @@ export default () => (
               width: '100%',
             }}
             alt={'Background'}
-            src={'https://www.w3schools.com/howto/img_fjords.jpg'}
+            src={'/images/main-2.jpg'}
           />
         </Grid.Column>
         <Grid.Column
