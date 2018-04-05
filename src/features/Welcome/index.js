@@ -1,4 +1,5 @@
 import { Button, Grid } from 'semantic-ui-react'
+import { Col, Container, Row } from 'react-grid-system'
 
 import AppBar from 'features/AppBar'
 import { Link } from 'react-router-dom'
@@ -48,23 +49,18 @@ export default () => (
       <AttentionBox />
     </div>
 
-    <Grid columns={2}>
-      <Grid.Row>
-        <Grid.Column
-          style={{
-            padding: '0px',
-          }}>
+    <Container fluid style={{ margin: '0', padding: '0' }}>
+      <Row style={{ marginBottom: '0px' }}>
+        <Col md={6}>
           <div style={{ padding: '40px' }}>
-            <h1 style={{ textAlign: 'center', fontSize: '60px' }}>Problem?</h1>
-            <h3>
-              Life happens to be imbalance. Eventually it causes troubles.
-            </h3>
+            <h1 style={{ fontSize: '60px' }}>Life happens to be imbalance</h1>
+            <br />
+            <br />
+
+            <h2>Eventually, it causes troubles.</h2>
           </div>
-        </Grid.Column>
-        <Grid.Column
-          style={{
-            padding: '0px',
-          }}>
+        </Col>
+        <Col md={6} style={{ padding: '0' }}>
           <img
             style={{
               width: '100%',
@@ -72,14 +68,10 @@ export default () => (
             alt={'Background'}
             src={'/images/main-1.jpg'}
           />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column
-          color={'red'}
-          style={{
-            padding: '0px',
-          }}>
+        </Col>
+      </Row>
+      <Row style={{ marginTop: '0px' }}>
+        <Col md={6} style={{ padding: '0' }}>
           <img
             style={{
               width: '100%',
@@ -87,38 +79,36 @@ export default () => (
             alt={'Background'}
             src={'/images/main-2.jpg'}
           />
-        </Grid.Column>
-        <Grid.Column
-          style={{
-            padding: '0px',
-          }}>
+        </Col>
+        <Col md={6}>
           <div style={{ padding: '40px' }}>
             <h1
               style={{
-                textAlign: 'center',
                 fontSize: '60px',
               }}>
-              Solution!
+              And we have no solution
             </h1>
-            <h3>Nope. We don’t have it. But...</h3>
+            <h3>But...</h3>
             <h3>
-              Good solution is a matter of good questions. And we do have some.
+              Good solution is a matter of good questions. And this what we do
+              have.
             </h3>
+            <br />
+            <br />
+            <br />
+            <div style={{ textAlign: 'center' }}>
+              <Link to={'/quiz'}>
+                <Button color={'orange'} size={'massive'}>
+                  Start questioning your life
+                </Button>
+                <p>it's completely free</p>
+                <br />
+                <br />
+              </Link>
+            </div>
           </div>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-
-    <div style={{ textAlign: 'center', marginTop: '80px', padding: '40px' }}>
-      <Link to={'/quiz'}>
-        <Button color={'orange'} size={'massive'}>
-          Start questioning your life
-        </Button>
-        <br />
-        <br />
-        <br />
-        <br />
-      </Link>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   </div>
 )
