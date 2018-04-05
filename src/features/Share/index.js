@@ -33,7 +33,6 @@ export default ({ blocks }) => (
       value={createShareURL()}
       onChange={() => {}}
     />
-
     <br />
     <br />
     <div
@@ -41,12 +40,12 @@ export default ({ blocks }) => (
         display: 'flex',
       }}>
       <a target={'_blank'} href={createFacebookShareURL()}>
-        <Button color={'facebook'}>FaceBook</Button>
+        <Button color={'facebook'}>Share with FaceBook</Button>
       </a>
       <br />
       <br />
       <a target={'_blank'} href={createTwitterShareURL()}>
-        <Button color={'twitter'}>Twitter</Button>
+        <Button color={'twitter'}>Share with Twitter</Button>
       </a>
     </div>
   </div>
