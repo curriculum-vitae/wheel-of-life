@@ -33,9 +33,9 @@ const Column = ({ children }) => (
     <div
       style={{
         width: '48%',
-        backgroundColor: grey[100],
         padding: '20px',
-        borderRadius: '2px',
+        borderRadius: '1px',
+        backgroundColor: 'white',
         boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
       }}>
       {children}
@@ -78,9 +78,12 @@ const NextActions = compose(
 ))
 
 const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
-  <React.Fragment>
+  <div
+    style={{
+      backgroundColor: grey[200],
+    }}>
     <AppBar color={'black'} />
-    <div style={{ background: `${grey[300]}`, height: '1px' }} />
+    <div style={{ height: '1px' }} />
     <br />
     <Column>
       <h2>Results</h2>
@@ -105,7 +108,7 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <br />
     <br />
     <br />
-  </React.Fragment>
+  </div>
 )
 
 export default compose(
