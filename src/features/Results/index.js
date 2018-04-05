@@ -33,7 +33,7 @@ const Column = ({ children }) => (
     <div
       style={{
         width: '48%',
-        padding: '20px',
+        padding: '14px 20px',
         borderRadius: '1px',
         backgroundColor: 'white',
         boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
@@ -43,13 +43,22 @@ const Column = ({ children }) => (
   </div>
 )
 
+const Header = ({ children, ...props }) => (
+  <h4
+    style={{
+      color: grey[700],
+    }}
+    children={children}
+    {...props}
+  />
+)
+
 const NextActions = compose(
   withProps(({ blocks }) => ({
     average: getAverage({ blocks }),
   })),
 )(({ blocks, average }) => (
   <React.Fragment>
-    <h2>What is next?</h2>
     Your average score is <b>{String(average).slice(0, 3)}</b>. That's{' '}
     {mapAverageToGrade(average)}.
     <br />
@@ -86,23 +95,25 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
     <div style={{ height: '1px' }} />
     <br />
     <Column>
-      <h2>Results</h2>
+      <Header>Results</Header>
       {/* Hacking */}
       <div style={{ marginLeft: '-140px' }}>
         <Wheel blocks={blocks} />
       </div>
-      <br />
-      <h2>Actions</h2>
-      <Link to={'/quiz'}>
-        <Button>Start again</Button>
-      </Link>
-      <Link to={'/'}>
-        <Button>Visit main page</Button>
-      </Link>
-      <h2>Sharing</h2>
+      <Header>What is next?</Header>
+      <NextActions blocks={blocks} />
+      <Header>Actions</Header>
+      <React.Fragment>
+        <Link to={'/quiz'}>
+          <Button>Start again</Button>
+        </Link>
+        <Link to={'/'}>
+          <Button>Visit main page</Button>
+        </Link>
+      </React.Fragment>
+      <Header>Sharing</Header>
 
       <Share blocks={blocks} />
-      <NextActions blocks={blocks} />
     </Column>
     <br />
     <br />
