@@ -98,7 +98,7 @@ const Results = ({ setIndex = () => {}, blocks, index = 0 }) => (
       <Header>Results</Header>
       {/* Hacking */}
 
-      <Wheel blocks={blocks} />
+      <Wheel height={600} width={600} blocks={blocks} />
 
       <Header>What is next?</Header>
       <NextActions blocks={blocks} />
