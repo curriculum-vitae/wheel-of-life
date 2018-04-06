@@ -1,5 +1,5 @@
-import { Button, Grid } from 'semantic-ui-react'
-import { Col, Container, Hidden, Row } from 'react-grid-system'
+import { Button, Divider, Grid } from 'semantic-ui-react'
+import { Col, Container, Hidden, Row, Visible } from 'react-grid-system'
 
 import AppBar from 'features/AppBar'
 import { Link } from 'react-router-dom'
@@ -72,6 +72,9 @@ export default () => (
           </Col>
         </Hidden>
       </Row>
+      <Visible xs sm>
+        <Divider />
+      </Visible>
       <Row style={{ marginTop: '0px' }}>
         <Hidden xs sm>
           <Col md={6} style={{ padding: '0' }}>
