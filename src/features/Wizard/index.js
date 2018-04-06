@@ -5,7 +5,7 @@ import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
-import Question from 'features/Question'
+import { Question } from 'features/Question'
 import React from 'react'
 import { WizardDone } from 'features/Wizard/components/Done'
 

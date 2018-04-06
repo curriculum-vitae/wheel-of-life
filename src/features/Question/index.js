@@ -3,7 +3,7 @@ import { Button, List } from 'semantic-ui-react'
 import React from 'react'
 import { times } from 'lodash/fp'
 
-export default ({ block, onChange = () => {} }) => (
+export const Question = ({ block, onChange = () => {} }) => (
   <div>
     <h2
       style={{
