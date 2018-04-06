@@ -12,7 +12,7 @@ const renderVoteButtons = ({ onChange, block }) => (from, to) => (
         primary={block.value === index + 1 + from}
         active={false}
         compact
-        onClick={() => onChange(index + 1 + from)}>
+        onClick={() => onChange(index + from)}>
         {index + from}
       </Button>
     ))(to - from + 1)}

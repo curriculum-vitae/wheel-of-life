@@ -9,7 +9,7 @@ import { Question } from 'features/Question'
 import React from 'react'
 import { WizardDone } from 'features/Wizard/components/Done'
 
-const StepButton = ({ ...props }) => <Button size={'huge'} {...props} />
+const StepButton = ({ ...props }) => <Button size={'large'} {...props} />
 
 const Component = ({
   match,
