@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { grey } from 'utils/colors'
-export default ({ color = 'white' }) => (
+
+export const AppBar = ({ color = 'white' }) => (
   <div
     style={{
       height: '54px',

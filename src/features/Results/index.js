@@ -1,7 +1,7 @@
 import { Button, List } from 'semantic-ui-react'
 import { compose, withProps } from 'recompose'
 
-import AppBar from 'features/AppBar'
+import { AppBar } from 'features/AppBar'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import Share from 'features/Share'

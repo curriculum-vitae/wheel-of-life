@@ -1,7 +1,7 @@
 import { Button, Divider, Grid } from 'semantic-ui-react'
 import { Col, Container, Hidden, Row, Visible } from 'react-grid-system'
 
-import AppBar from 'features/AppBar'
+import { AppBar } from 'features/AppBar'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { red } from 'utils/colors'

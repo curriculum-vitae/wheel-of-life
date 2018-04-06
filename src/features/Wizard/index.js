@@ -1,6 +1,6 @@
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
-import AppBar from 'features/AppBar'
+import { AppBar } from 'features/AppBar'
 import { BLOCKS } from 'utils/constants'
 import { Button } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
