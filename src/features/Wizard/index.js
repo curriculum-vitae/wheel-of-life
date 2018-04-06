@@ -98,7 +98,7 @@ const Component = ({
   </React.Fragment>
 )
 
-export default compose(
+export const Wizard = compose(
   withState('blocks', 'setBlocks', BLOCKS),
   withStateHandlers(null, {
     updateBlockWithValue: (state, { setBlocks, blocks }) => ({

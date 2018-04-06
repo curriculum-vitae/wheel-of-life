@@ -14,7 +14,7 @@ import { BLOCKS } from 'utils/constants'
 import { Results } from 'features/Results'
 import { Welcome } from 'features/Welcome'
 import Wheel from 'features/Wheel'
-import Wizard from 'features/Wizard'
+import { Wizard } from 'features/Wizard'
 import { compose } from 'lodash/fp'
 import logo from 'logo.svg'
 
