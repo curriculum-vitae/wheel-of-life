@@ -1,7 +1,23 @@
 import { Button, List } from 'semantic-ui-react'
+import { Hidden, Visible } from 'react-grid-system'
 
 import React from 'react'
 import { times } from 'lodash/fp'
+
+const renderVoteButtons = ({ onChange, block }) => (from, to) => (
+  <Button.Group size={'huge'} fluid>
+    {times(index => (
+      <Button
+        key={index + 1 + from}
+        primary={block.value === index + 1 + from}
+        active={false}
+        compact
+        onClick={() => onChange(index + 1 + from)}>
+        {index + from}
+      </Button>
+    ))(to - from + 1)}
+  </Button.Group>
+)
 
 export const Question = ({ block, onChange = () => {} }) => (
   <div>
@@ -31,24 +47,13 @@ export const Question = ({ block, onChange = () => {} }) => (
       </List>
     </div>
     <br />
-
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-      <Button.Group size={'large'} fluid>
-        {times(index => (
-          <Button
-            key={index + 1}
-            primary={block.value === index + 1}
-            active={false}
-            compact
-            onClick={() => onChange(index + 1)}>
-            {index + 1}
-          </Button>
-        ))(10)}
-      </Button.Group>
-    </div>
+    <Visible xs sm>
+      {renderVoteButtons({ onChange, block })(1, 5)}
+      <div style={{ height: '1px' }} />
+      {renderVoteButtons({ onChange, block })(6, 10)}
+    </Visible>
+    <Visible md lg xl>
+      {renderVoteButtons({ onChange, block })(1, 10)}
+    </Visible>
   </div>
 )
