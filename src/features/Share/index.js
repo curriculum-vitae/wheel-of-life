@@ -22,7 +22,7 @@ const createTwitterShareURL = () => {
   return `http://www.twitter.com/share?url=${dest}`
 }
 
-export default ({ blocks }) => (
+export const Share = ({ blocks }) => (
   <div>
     <Input
       style={{
