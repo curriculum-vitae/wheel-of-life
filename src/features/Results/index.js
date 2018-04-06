@@ -93,7 +93,7 @@ const NextActions = compose(
   </React.Fragment>
 ))
 
-const Results = ({
+const Component = ({
   setIndex = () => {},
   blocks,
   index = 0,
@@ -138,9 +138,9 @@ const Results = ({
   </div>
 )
 
-export default compose(
+export const Results = compose(
   withProps(props => ({
     blocks: decodeStateFromString(props.match.params.state).blocks,
   })),
   withContentRect('bounds'),
-)(Results)
+)(Component)
