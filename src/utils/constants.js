@@ -25,57 +25,57 @@ export const BLOCKS = [
       'Are you eating healthy enough?',
       'How many habits that work against your health do you have?',
     ],
-    value: 5,
+    value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
     name: 'Family',
     color: blue[SHADE],
-    value: 10,
+    value: process.env.NODE_ENV === 'develop' ? 10 : 0,
   },
   {
     name: 'Career',
     color: pink[SHADE],
-    value: 4,
+    value: process.env.NODE_ENV === 'develop' ? 4 : 0,
   },
   {
     name: 'Personal development',
     color: yellow[SHADE],
-    value: 5,
+    value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
 
   {
     name: 'Partner',
     color: purple[SHADE],
-    value: 6,
+    value: process.env.NODE_ENV === 'develop' ? 6 : 0,
   },
   {
     name: 'Spirituality',
     color: deepOrange[SHADE],
-    value: 5,
+    value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
     name: 'Fun',
     color: brown[SHADE],
-    value: 5,
+    value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
     name: 'Environment',
     color: green[SHADE],
-    value: 2,
+    value: process.env.NODE_ENV === 'develop' ? 2 : 0,
   },
   {
     name: 'Finances',
     color: cyan[SHADE],
-    value: 1,
+    value: process.env.NODE_ENV === 'develop' ? 1 : 0,
   },
   {
     name: 'Friends',
     color: amber[SHADE],
-    value: 0,
+    value: process.env.NODE_ENV === 'develop' ? 0 : 0,
   },
   {
     name: 'Social',
     color: indigo[SHADE],
-    value: 10,
+    value: process.env.NODE_ENV === 'develop' ? 10 : 0,
   },
 ]
