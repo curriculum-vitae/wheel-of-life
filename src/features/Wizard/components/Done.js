@@ -1,8 +1,11 @@
 import { Button, Icon } from 'semantic-ui-react'
+import { flow, map, pick } from 'lodash/fp'
 
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { encodeStateToString } from 'utils/helpers'
+
+const PROPS_TO_PASS_TO_RESULTS = ['name', 'color', 'value']
 
 const WizardDone = ({ setIndex, index, blocks }) => (
   <div>
@@ -21,7 +24,9 @@ const WizardDone = ({ setIndex, index, blocks }) => (
       size={'huge'}
       fluid
       as={Link}
-      to={`/results/${encodeStateToString({ blocks })}`}
+      to={`/results/${encodeStateToString({
+        blocks: map(pick(PROPS_TO_PASS_TO_RESULTS))(blocks),
+      })}`}
       onClick={() => setIndex(index + 1)}>
       Show results
     </Button>
