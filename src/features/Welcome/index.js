@@ -28,7 +28,7 @@ const AttentionBox = () => (
       }}>
       <br />
       <br />
-      <h1>I’ve tried it for myself. It changed my left. </h1>
+      <h1>I’ve tried it for myself. It changed my life. </h1>
 
       <h1>
         It might not work for you. You are two minutes away to figure this out.
