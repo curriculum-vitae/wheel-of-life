@@ -3,14 +3,6 @@ import { Button, List } from 'semantic-ui-react'
 import React from 'react'
 import { times } from 'lodash/fp'
 
-const DUMMY_SUBQUESTIONS = [
-  'How meaninful your something?',
-  'What is the weather?',
-  'How much time do you pur in this shpere?',
-  'Do you plan it?',
-  'How much better you can do it?',
-]
-
 export default ({ block, onChange = () => {} }) => (
   <div>
     <h2
@@ -24,7 +16,7 @@ export default ({ block, onChange = () => {} }) => (
     </h2>
     <div>
       <List divided relaxed>
-        {DUMMY_SUBQUESTIONS.map(str => (
+        {(block.questions || []).map(str => (
           <List.Item key={str} color={'white'}>
             <List.Icon
               name={'question'}

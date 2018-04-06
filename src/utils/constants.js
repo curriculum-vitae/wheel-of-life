@@ -18,6 +18,13 @@ export const BLOCKS = [
   {
     name: 'Health',
     color: red[SHADE],
+    questions: [
+      'How meaninful your something?',
+      'What is the weather?',
+      'How much time do you pur in this shpere?',
+      'Do you plan it?',
+      'How much better you can do it?',
+    ],
     value: 5,
   },
   {
