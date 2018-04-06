@@ -23,7 +23,8 @@ const mapAverageToGrade = average => {
   if (average >= 0 && average <= 3) return 'really bad'
   if (average > 3 && average <= 5) return 'pretty bad'
   if (average > 5 && average <= 8) return 'average'
-  if (average > 8 && average <= 10) return 'pretty good'
+  if (average > 8 && average <= 9) return 'pretty good'
+  if (average > 9 && average <= 10) return 'awesome'
   return 'ERROR'
 }
 
