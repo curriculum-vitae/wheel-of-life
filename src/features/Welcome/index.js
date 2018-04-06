@@ -1,5 +1,5 @@
 import { Button, Grid } from 'semantic-ui-react'
-import { Col, Container, Row } from 'react-grid-system'
+import { Col, Container, Hidden, Row } from 'react-grid-system'
 
 import AppBar from 'features/AppBar'
 import { Link } from 'react-router-dom'
@@ -51,7 +51,7 @@ export default () => (
 
     <Container fluid style={{ margin: '0', padding: '0' }}>
       <Row style={{ marginBottom: '0px' }}>
-        <Col md={6}>
+        <Col xs={12} md={6}>
           <div style={{ padding: '40px' }}>
             <h1 style={{ fontSize: '60px' }}>Life happens to be imbalance</h1>
             <br />
@@ -60,26 +60,30 @@ export default () => (
             <h2>Eventually, it causes troubles.</h2>
           </div>
         </Col>
-        <Col md={6} style={{ padding: '0' }}>
-          <img
-            style={{
-              width: '100%',
-            }}
-            alt={'Background'}
-            src={'/images/main-1.jpg'}
-          />
-        </Col>
+        <Hidden xs sm>
+          <Col md={6} style={{ padding: '0' }}>
+            <img
+              style={{
+                width: '100%',
+              }}
+              alt={'Background'}
+              src={'/images/main-1.jpg'}
+            />
+          </Col>
+        </Hidden>
       </Row>
       <Row style={{ marginTop: '0px' }}>
-        <Col md={6} style={{ padding: '0' }}>
-          <img
-            style={{
-              width: '100%',
-            }}
-            alt={'Background'}
-            src={'/images/main-2.jpg'}
-          />
-        </Col>
+        <Hidden xs sm>
+          <Col md={6} style={{ padding: '0' }}>
+            <img
+              style={{
+                width: '100%',
+              }}
+              alt={'Background'}
+              src={'/images/main-2.jpg'}
+            />
+          </Col>
+        </Hidden>
         <Col md={6}>
           <div style={{ padding: '40px' }}>
             <h1
