@@ -39,7 +39,7 @@ const AttentionBox = () => (
   </div>
 )
 
-export default () => (
+export const Welcome = () => (
   <div>
     <div
       style={{
