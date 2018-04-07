@@ -1,4 +1,4 @@
-import { Button, Divider, Grid } from 'semantic-ui-react'
+import { Button, Divider, Grid, Image } from 'semantic-ui-react'
 import { Col, Container, Hidden, Row, Visible } from 'react-grid-system'
 
 import { AppBar } from 'features/AppBar'
@@ -24,17 +24,32 @@ const AttentionBox = () => (
     <div
       style={{
         padding: '40px',
-        textAlign: 'center',
       }}>
-      <br />
-      <br />
-      <h1>I’ve tried it for myself. It changed my life. </h1>
-
-      <h1>
-        It might not work for you. You are two minutes away to figure this out.
-      </h1>
-      <br />
-      <br />
+      <Row>
+        <Col xs={12} md={4}>
+          <Image
+            style={{
+              float: 'right',
+            }}
+            src={
+              'https://www.wikihow.com/images/thumb/3/38/Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg/aid689960-v4-728px-Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg'
+            }
+            size={'small'}
+            rounded
+          />
+        </Col>
+        <Col xs={12} md={6}>
+          <div>
+            <h1>«Hey! I’ve tried it for myself and it changed my life! </h1>
+            <h1>
+              It might not work for you. You are two minutes away to figure this
+              out.»
+            </h1>
+            <br />
+            <br />
+          </div>
+        </Col>
+      </Row>
     </div>
   </div>
 )
