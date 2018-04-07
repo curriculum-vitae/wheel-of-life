@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import { encodeStateToString } from 'utils/helpers'
 
-const PROPS_TO_PASS_TO_RESULTS = ['name', 'color', 'value']
+const PROPS_TO_PASS_TO_RESULTS = ['id', 'value']
 
 const WizardDone = ({ setIndex, index, blocks }) => (
   <div>

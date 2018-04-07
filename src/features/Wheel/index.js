@@ -1,5 +1,6 @@
 import * as d3 from 'd3'
 import { compose, lifecycle, setDisplayName, withProps } from 'recompose'
+import { BLOCKS } from '../../utils/constants'
 
 import { RefsStore } from '../../utils/refsUtils'
 import { WheelChart } from './components/WheelChart'
@@ -23,7 +24,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .domain([0, maxValue])
     .range([0, barHeight])
 
-  const keys = blocks.map(d => d.name)
+  const keys = blocks.map(block => BLOCKS[block.id].name)
   const numBars = keys.length
 
   const x = d3
@@ -58,7 +59,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .each(d => {
       d.outerRadius = 0
     })
-    .style('fill', d => d.color)
+    .style('fill', block => BLOCKS[block.id].color)
     .attr('d', arc)
 
   segments
@@ -122,7 +123,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     })
     .style('fill', d => d.color)
     .attr('transform', (d, i) => `translate(${r * Math.cos(i * theta)}, ${r * Math.sin(i * theta)})`)
-    .text(block => block.name.toUpperCase())
+    .text(block => BLOCKS[block.id].name.toUpperCase())
 }
 
 export const Wheel = compose(
