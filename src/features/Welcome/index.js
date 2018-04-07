@@ -1,17 +1,10 @@
-import { Button, Divider, Grid, Image } from 'semantic-ui-react'
+import { Button, Divider, Image } from 'semantic-ui-react'
 import { Col, Container, Hidden, Row, Visible } from 'react-grid-system'
 
 import { AppBar } from 'features/AppBar'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { red } from 'utils/colors'
-
-const Point = ({ title, text }) => (
-  <div>
-    <h1>{title}</h1>
-    <p>{text}</p>
-  </div>
-)
 
 const AttentionBox = () => (
   <div

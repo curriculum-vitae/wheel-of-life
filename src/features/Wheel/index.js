@@ -7,7 +7,7 @@ import { WheelChart } from './components/WheelChart'
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const maxValue = 10
 
-  const barHeight = height / 2 - 40
+  const barHeight = height / 2 - 100
 
   const svg = d3
     .select(refs.svg)
@@ -105,19 +105,24 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
       `m0 ${-labelRadius} a${labelRadius} ${labelRadius} 0 1,1 -0.01 0`,
     )
 
+  const theta = 2 * Math.PI / keys.length
+  const r = 250
+
+  console.log('blocks', blocks)
   labels
     .selectAll('text')
-    .data(keys)
+    .data(blocks)
     .enter()
     .append('text')
     .style('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('font-size', () => (width < 400 ? '5' : '9'))
-    .style('fill', () => '#3e3e3e')
-    .append('textPath')
-    .attr('xlink:href', '#label-path')
-    .attr('startOffset', (d, i) => i * 100 / numBars + 50 / numBars + '%')
-    .text(test => test.toUpperCase())
+    .style('font-size', '9')
+    .each(d => {
+      d.outerRadius = 0
+    })
+    .style('fill', d => d.color)
+    .attr('transform', (d, i) => `translate(${r * Math.cos(i * theta)}, ${r * Math.sin(i * theta)})`)
+    .text(block => block.name.toUpperCase())
 }
 
 export const Wheel = compose(
