@@ -37,10 +37,10 @@ var Base64 = {
       r = ((o & 15) << 4) | (u >> 2)
       i = ((u & 3) << 6) | a
       t = t + String.fromCharCode(n)
-      if (u != 64) {
+      if (u !== 64) {
         t = t + String.fromCharCode(r)
       }
-      if (a != 64) {
+      if (a !== 64) {
         t = t + String.fromCharCode(i)
       }
     }
@@ -68,7 +68,6 @@ var Base64 = {
   _utf8_decode: function(e) {
     var t = ''
     var n = 0
-    var c1 = 0
     var c2 = 0
     var c3
     var r = 0

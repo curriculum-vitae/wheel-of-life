@@ -1,5 +1,5 @@
 import { Button, Icon } from 'semantic-ui-react'
-import { flow, map, pick } from 'lodash/fp'
+import { map, pick } from 'lodash/fp'
 
 import { Link } from 'react-router-dom'
 import React from 'react'

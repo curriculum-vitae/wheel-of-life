@@ -1,5 +1,5 @@
 import { Button, List } from 'semantic-ui-react'
-import { Hidden, Visible } from 'react-grid-system'
+import { Visible } from 'react-grid-system'
 
 import React from 'react'
 import { times } from 'lodash/fp'
