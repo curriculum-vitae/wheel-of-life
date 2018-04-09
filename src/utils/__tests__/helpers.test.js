@@ -47,7 +47,7 @@ describe('helpers', () => {
       ],
     }
 
-    const stateEncoded = "eMKcwqtWMlTCsjI0w5BRMsKCUMOGEMOKBELCmUIoMwhlDsKhLCDClCXChDI0AMORwrUAw6jCmQ15"
+    const stateEncoded = "ivgnmvgnavgnlvgnovgnhvgncvgnyvgnpvgngvg"
 
     test('should encode', () => {
       expect(encodeStateToString(stateDecoded)).toEqual(stateEncoded)

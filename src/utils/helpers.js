@@ -1,22 +1,51 @@
-import base64 from 'lib/base64'
-import pako from 'pako'
-import { toPairs } from 'lodash'
+const unbreakableCypherV1 = {
+  '0': 'd',
+  '1': 'i',
+  '2': 'm',
+  '3': 'a',
+  '4': 'l',
+  '5': 'o',
+  '6': 'h',
+  '7': 'c',
+  '8': 'y',
+  '9': 'p',
+  '10': 'g',
+  '11': 'e',
+  '12': 'r',
+  ':': 'v',
+  ',': 'n',
+}
 
 export const encodeStateToString = state => {
-  const obj = state.blocks.reduce((acc, block) => {
-    acc[block.id] = block.value
-    return acc
-  }, {})
-  return base64.encode(pako.deflate(JSON.stringify(obj), { to: 'string' }))
+  let cypher = ''
+
+  for (let i = 0; i < state.blocks.length; i++) {
+    const block = state.blocks[i]
+
+    cypher += `${unbreakableCypherV1[block.id]}${unbreakableCypherV1[':']}${
+      unbreakableCypherV1[block.value]
+    }`
+    if (i !== state.blocks.length - 1) {
+      cypher += unbreakableCypherV1[',']
+    }
+  }
+
+  return cypher
 }
 
 export const decodeStateFromString = str => {
-  const decoded = JSON.parse(pako.inflate(base64.decode(str), { to: 'string' }))
+  const deCypher = str.split(unbreakableCypherV1[','])
 
   return {
-    blocks: toPairs(decoded).map(pair => ({
-      id: +pair[0],
-      value: pair[1],
-    })),
+    blocks: deCypher.map(value => {
+      const numbers = value.split(unbreakableCypherV1[':'])
+      return {
+        id: +getKeyByValue(unbreakableCypherV1, numbers[0]),
+        value: +getKeyByValue(unbreakableCypherV1, numbers[1]),
+      }
+    }),
   }
 }
+
+const getKeyByValue = (object, value) =>
+  Object.keys(object).find(key => object[key] === value)
