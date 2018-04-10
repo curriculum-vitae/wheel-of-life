@@ -19,26 +19,26 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .select(refs.svg)
     .append('svg')
     .attr('preserveAspectRatio', 'xMinYMin meet')
-    .attr('viewBox', `-280 -280 ${width} ${height}`)
+    .attr('viewBox', `-${width / 2} -${width / 2} ${width} ${height}`)
     .classed('svg-content', true)
     .append('g')
 
-  const barScale = d3
+  const scaleBar = d3
     .scaleLinear()
     .domain([0, MAX_VALUE])
     .range([0, barHeight])
 
-  const x = d3
+  const scaleBarWithMinus = d3
     .scaleLinear()
     .domain([0, MAX_VALUE])
     .range([0, -barHeight])
 
   svg
     .selectAll('circle')
-    .data(x.ticks(10))
+    .data(scaleBarWithMinus.ticks(10))
     .enter()
     .append('circle')
-    .attr('r', d => barScale(d))
+    .attr('r', whatItIs => scaleBar(whatItIs))
     .style('fill', 'none')
     .style('stroke', '#a7aaa9')
     .style('stroke-dasharray', '1,3')
@@ -46,8 +46,8 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   const arc = d3
     .arc()
-    .startAngle((d, i) => i * 2 * Math.PI / countOfBlocks)
-    .endAngle((d, i) => (i + 1) * 2 * Math.PI / countOfBlocks)
+    .startAngle((d, index) => index * 2 * Math.PI / countOfBlocks)
+    .endAngle((d, index) => (index + 1) * 2 * Math.PI / countOfBlocks)
     .innerRadius(0)
 
   const segments = svg
@@ -65,7 +65,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .duration(1)
     .delay((d, i) => i * 1)
     .attrTween('d', (d, index) => {
-      const i = d3.interpolate(d.outerRadius, barScale(+d.value))
+      const i = d3.interpolate(d.outerRadius, scaleBar(+d.value))
       return t => {
         d.outerRadius = i(t)
         return arc(d, index)
