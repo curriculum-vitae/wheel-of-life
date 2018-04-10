@@ -118,7 +118,7 @@ export const Wizard = compose(
   withState(
     'index',
     'setIndex',
-    process.env.NODE_ENV === 'develop' ? BLOCKS.length - 2 : 2,
+    process.env.NODE_ENV === 'development' ? BLOCKS.length - 2 : 0,
   ),
   withProps(props => ({
     isLastStep: props.index === props.blocks.length - 1,
