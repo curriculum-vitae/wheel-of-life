@@ -16,6 +16,7 @@ const SHADE = 700
 
 export const BLOCKS = [
   {
+    id: 0,
     name: 'Health',
     color: red[SHADE],
     questions: [
@@ -28,52 +29,62 @@ export const BLOCKS = [
     value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
+    id: 1,
     name: 'Family',
     color: blue[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 10 : 0,
   },
   {
+    id: 2,
     name: 'Career',
     color: pink[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 4 : 0,
   },
   {
+    id: 3,
     name: 'Personal development',
     color: yellow[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
 
   {
+    id: 4,
     name: 'Partner',
     color: purple[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 6 : 0,
   },
   {
+    id: 5,
     name: 'Spirituality',
     color: deepOrange[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
+    id: 6,
     name: 'Fun',
     color: brown[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 5 : 0,
   },
   {
+    id: 7,
     name: 'Environment',
     color: green[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 2 : 0,
   },
   {
+    id: 8,
     name: 'Finances',
     color: cyan[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 1 : 0,
   },
   {
+    id: 9,
     name: 'Friends',
     color: amber[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 0 : 0,
   },
   {
+    id: 10,
     name: 'Social',
     color: indigo[SHADE],
     value: process.env.NODE_ENV === 'develop' ? 10 : 0,

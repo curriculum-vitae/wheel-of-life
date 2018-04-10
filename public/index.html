@@ -11,6 +11,19 @@
     -->
     <meta property="og:title" content="Wheel of Life" />
     <meta property="og:image" content="https://wheel-of-life.netlify.com/images/og.png" />
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBiYYh-cxDv9k_89TfiCh1955MColKpeOA",
+        authDomain: "wheel-of-life-56f33.firebaseapp.com",
+        databaseURL: "https://wheel-of-life-56f33.firebaseio.com",
+        projectId: "wheel-of-life-56f33",
+        storageBucket: "wheel-of-life-56f33.appspot.com",
+        messagingSenderId: "833317901287"
+      };
+      firebase.initializeApp(config);
+    </script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
