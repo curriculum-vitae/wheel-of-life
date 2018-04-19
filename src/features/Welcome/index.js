@@ -35,9 +35,12 @@ const AttentionBox = () => (
           <div>
             <h1>«Hey! I’ve tried it for myself and it changed my life! </h1>
             <h1>
-              It might not work for you. You are two minutes away to figure this
-              out.»
+              It might not work for you, but you are two minutes away to figure
+              this out.»
             </h1>
+            <h3 style={{ textAlign: 'right' }}>
+              © co-creator of wheel-of-life.guru
+            </h3>
             <br />
             <br />
           </div>
