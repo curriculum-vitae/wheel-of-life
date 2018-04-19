@@ -5,7 +5,6 @@ import {
   cyan,
   deepOrange,
   green,
-  grey,
   indigo,
   pink,
   purple,
@@ -19,7 +18,7 @@ export const BLOCKS = [
   {
     id: 0,
     name: 'Health',
-    color: grey[SHADE],
+    color: red[SHADE],
     questions: [
       'Can you say you are in a good shape?',
       'Do you exercise on some regular basis?',

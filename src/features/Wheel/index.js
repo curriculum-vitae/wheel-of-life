@@ -9,16 +9,17 @@ import { WheelChart } from './components/WheelChart'
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const MAX_VALUE = 10
 
-  const CIRCLES_SPACE = 0.8
+  const CIRCLES_SPACE = 0.85
+  const LABELS_SPACE = 0.94
   const radiusOfCircle = CIRCLES_SPACE * width / 2
-  const radiusOfLabels = CIRCLES_SPACE * width / 2
+  const radiusOfLabels = LABELS_SPACE * width / 2
 
   const countOfBlocks = blocks.length
 
   const getAngleArcStart = index => 2 * Math.PI * index / countOfBlocks
   const getAngleArcEnd = index => 2 * Math.PI * (index + 1) / countOfBlocks
 
-  const getThetaLabel = index =>
+  const getAngleLabel = index =>
     (getAngleArcStart(index) + getAngleArcEnd(index)) / 2 - Math.PI / 2
 
   const svg = d3
@@ -112,16 +113,16 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .append('text')
     .style('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('font-size', '12')
+    .style('font-size', '25')
     .style('fill', block => BLOCKS[block.id].color)
     .attr('transform', (block, index) => {
-      const angle = getThetaLabel(index)
+      const angle = getAngleLabel(index)
       const xCoord = radiusOfLabels * Math.cos(angle)
       const yCoord = radiusOfLabels * Math.sin(angle)
 
       return `translate(${xCoord}, ${yCoord})`
     })
-    .text(block => BLOCKS[block.id].name.toUpperCase())
+    .text(block => BLOCKS[block.id].name.toUpperCase().slice(0, 2))
 }
 
 export const Wheel = compose(
