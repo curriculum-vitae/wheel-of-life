@@ -9,9 +9,9 @@ import { WheelChart } from './components/WheelChart'
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const MAX_VALUE = 10
 
-  const barHeight = height / 2 - 100
+  const heightOfBar = height / 2 - 100
 
-  const r = width / 2
+  const radius = width / 2
   const names = blocks.map(d => d.name)
   const countOfBlocks = names.length
   const theta = 2 * Math.PI / names.length
@@ -27,16 +27,12 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const scaleBar = d3
     .scaleLinear()
     .domain([0, MAX_VALUE])
-    .range([0, barHeight])
+    .range([0, heightOfBar])
 
   const scaleBarWithMinus = d3
-  const keys = blocks.map(block => BLOCKS[block.id].name)
-  const numBars = keys.length
-
-  const x = d3
     .scaleLinear()
     .domain([0, MAX_VALUE])
-    .range([0, -barHeight])
+    .range([0, -heightOfBar])
 
   svg
     .selectAll('circle')
@@ -55,18 +51,17 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .endAngle((d, index) => (index + 1) * 2 * Math.PI / countOfBlocks)
     .innerRadius(0)
 
-  const segments = svg
+  /*
+    Arcs
+  */
+  svg
     .selectAll('path')
     .data(blocks)
     .enter()
     .append('path')
-    .each(d => {
-      d.outerRadius = 0
-    })
+    .each(d => (d.outerRadius = 0))
     .style('fill', block => BLOCKS[block.id].color)
     .attr('d', arc)
-
-  segments
     .transition()
     // .ease(d3.easeCubic)
     .duration(1)
@@ -81,7 +76,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   svg
     .append('circle')
-    .attr('r', barHeight)
+    .attr('r', heightOfBar)
     .classed('outer', true)
     .style('fill', 'none')
     .style('stroke', 'black')
@@ -92,13 +87,16 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .data(names)
     .enter()
     .append('line')
-    .attr('y2', -barHeight - 20)
+    .attr('y2', -heightOfBar - 20)
     .style('stroke', '#696969')
     .style('stroke-width', '.5px')
     .attr('transform', (d, i) => 'rotate(' + i * 360 / countOfBlocks + ')')
 
-  const labelRadius = barHeight * 1.025
+  const labelRadius = heightOfBar * 1.025
 
+  /*
+  Labels
+  */
   const labels = svg.append('g').classed('labels', true)
 
   labels
@@ -110,7 +108,6 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
       `m0 ${-labelRadius} a${labelRadius} ${labelRadius} 0 1,1 -0.01 0`,
     )
 
-  console.log('blocks', blocks)
   labels
     .selectAll('text')
     .data(blocks)
@@ -122,11 +119,12 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .each(d => {
       d.outerRadius = 0
     })
-    .style('fill', d => d.color)
+    .style('fill', block => BLOCKS[block.id].color)
     .attr(
       'transform',
-      (d, i) =>
-        `translate(${r * Math.cos(i * theta)}, ${r * Math.sin(i * theta)})`,
+      (data, index) =>
+        `translate(${radius * Math.cos(index * theta)}, ${radius *
+          Math.sin(index * theta)})`,
     )
     .text(block => BLOCKS[block.id].name.toUpperCase())
 }
