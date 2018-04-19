@@ -70,9 +70,6 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .delay((d, i) => i * 1)
     */
     .attrTween('d', (block, index) => {
-      console.log('attr Ween block value in arcs')
-      console.log(block)
-      console.log(block.value)
       const otherFunctionWTF = d3.interpolate(
         block.outerRadius,
         scaleBar(block.value),
