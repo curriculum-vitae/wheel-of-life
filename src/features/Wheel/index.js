@@ -9,12 +9,17 @@ import { WheelChart } from './components/WheelChart'
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const MAX_VALUE = 10
 
-  const heightOfBar = height / 2 - 100
+  const CIRCLES_SPACE = 0.8
+  const radiusOfCircle = CIRCLES_SPACE * width / 2
+  const radiusOfLabels = CIRCLES_SPACE * width / 2
 
-  const radius = width / 2
-  const names = blocks.map(d => d.name)
-  const countOfBlocks = names.length
-  const theta = 2 * Math.PI / names.length
+  const countOfBlocks = blocks.length
+
+  const getAngleArcStart = index => 2 * Math.PI * index / countOfBlocks
+  const getAngleArcEnd = index => 2 * Math.PI * (index + 1) / countOfBlocks
+
+  const getThetaLabel = index =>
+    (getAngleArcStart(index) + getAngleArcEnd(index)) / 2 - Math.PI / 2
 
   const svg = d3
     .select(refs.svg)
@@ -27,16 +32,11 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const scaleBar = d3
     .scaleLinear()
     .domain([0, MAX_VALUE])
-    .range([0, heightOfBar])
-
-  const scaleBarWithMinus = d3
-    .scaleLinear()
-    .domain([0, MAX_VALUE])
-    .range([0, -heightOfBar])
+    .range([0, radiusOfCircle])
 
   svg
     .selectAll('circle')
-    .data(scaleBarWithMinus.ticks(10))
+    .data(scaleBar.ticks(10))
     .enter()
     .append('circle')
     .attr('r', whatItIs => scaleBar(whatItIs))
@@ -47,8 +47,8 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   const arc = d3
     .arc()
-    .startAngle((d, index) => index * 2 * Math.PI / countOfBlocks)
-    .endAngle((d, index) => (index + 1) * 2 * Math.PI / countOfBlocks)
+    .startAngle((block, index) => getAngleArcStart(index))
+    .endAngle((block, index) => getAngleArcEnd(index))
     .innerRadius(0)
 
   /*
@@ -63,20 +63,28 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .style('fill', block => BLOCKS[block.id].color)
     .attr('d', arc)
     .transition()
-    // .ease(d3.easeCubic)
-    .duration(1)
+    /*
+    .ease(d3.easeCubic)
+    .duration(1)    
     .delay((d, i) => i * 1)
-    .attrTween('d', (d, index) => {
-      const i = d3.interpolate(d.outerRadius, scaleBar(+d.value))
-      return t => {
-        d.outerRadius = i(t)
-        return arc(d, index)
+    */
+    .attrTween('d', (block, index) => {
+      console.log('attr Ween block value in arcs')
+      console.log(block)
+      console.log(block.value)
+      const otherFunctionWTF = d3.interpolate(
+        block.outerRadius,
+        scaleBar(block.value),
+      )
+      return someFunctionWTF => {
+        block.outerRadius = otherFunctionWTF(someFunctionWTF)
+        return arc(block, index)
       }
     })
 
   svg
     .append('circle')
-    .attr('r', heightOfBar)
+    .attr('r', radiusOfCircle)
     .classed('outer', true)
     .style('fill', 'none')
     .style('stroke', 'black')
@@ -84,30 +92,19 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   svg
     .selectAll('line')
-    .data(names)
+    .data(blocks)
     .enter()
     .append('line')
-    .attr('y2', -heightOfBar - 20)
+    .attr('y2', -radiusOfCircle)
     .style('stroke', '#696969')
     .style('stroke-width', '.5px')
-    .attr('transform', (d, i) => 'rotate(' + i * 360 / countOfBlocks + ')')
+    .attr('transform', (block, i) => 'rotate(' + i * 360 / countOfBlocks + ')')
 
-  const labelRadius = heightOfBar * 1.025
-
-  /*
-  Labels
-  */
   const labels = svg.append('g').classed('labels', true)
 
-  labels
-    .append('def')
-    .append('path')
-    .attr('id', 'label-path')
-    .attr(
-      'd',
-      `m0 ${-labelRadius} a${labelRadius} ${labelRadius} 0 1,1 -0.01 0`,
-    )
-
+  /*
+  Adding labels
+  */
   labels
     .selectAll('text')
     .data(blocks)
@@ -115,17 +112,15 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .append('text')
     .style('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('font-size', '9')
-    .each(d => {
-      d.outerRadius = 0
-    })
+    .style('font-size', '12')
     .style('fill', block => BLOCKS[block.id].color)
-    .attr(
-      'transform',
-      (data, index) =>
-        `translate(${radius * Math.cos(index * theta)}, ${radius *
-          Math.sin(index * theta)})`,
-    )
+    .attr('transform', (block, index) => {
+      const angle = getThetaLabel(index)
+      const xCoord = radiusOfLabels * Math.cos(angle)
+      const yCoord = radiusOfLabels * Math.sin(angle)
+
+      return `translate(${xCoord}, ${yCoord})`
+    })
     .text(block => BLOCKS[block.id].name.toUpperCase())
 }
 

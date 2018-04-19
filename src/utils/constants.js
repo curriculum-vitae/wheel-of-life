@@ -5,6 +5,7 @@ import {
   cyan,
   deepOrange,
   green,
+  grey,
   indigo,
   pink,
   purple,
@@ -12,13 +13,13 @@ import {
   yellow,
 } from 'utils/colors'
 
-const SHADE = 700
+const SHADE = 600
 
 export const BLOCKS = [
   {
     id: 0,
     name: 'Health',
-    color: red[SHADE],
+    color: grey[SHADE],
     questions: [
       'Can you say you are in a good shape?',
       'Do you exercise on some regular basis?',
