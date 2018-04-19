@@ -1,7 +1,6 @@
-import { Button, List } from 'semantic-ui-react'
-import { Visible } from 'react-grid-system'
-
+import { Button } from 'semantic-ui-react'
 import React from 'react'
+import { Visible } from 'react-grid-system'
 import { times } from 'lodash/fp'
 
 const renderVoteButtons = ({ onChange, block }) => (from, to) => (
@@ -30,22 +29,7 @@ export const Question = ({ block, onChange = () => {} }) => (
       }}>
       {block.name}
     </h2>
-    <div>
-      <List divided relaxed>
-        {(block.questions || []).map(str => (
-          <List.Item key={str} color={'white'}>
-            <List.Icon
-              name={'question'}
-              size={'large'}
-              verticalAlign="middle"
-            />
-            <List.Content>
-              <List.Header>{str}</List.Header>
-            </List.Content>
-          </List.Item>
-        ))}
-      </List>
-    </div>
+
     <br />
     <Visible xs sm>
       {renderVoteButtons({ onChange, block })(1, 5)}
