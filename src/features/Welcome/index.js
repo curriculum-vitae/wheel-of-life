@@ -23,12 +23,13 @@ const AttentionBox = () => (
           <Image
             style={{
               float: 'right',
+              marginBottom: '12px',
             }}
             src={
               'https://www.wikihow.com/images/thumb/3/38/Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg/aid689960-v4-728px-Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg'
             }
             size={'small'}
-            rounded
+            circular
           />
         </Col>
         <Col xs={12} md={6}>
