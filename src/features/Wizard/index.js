@@ -34,6 +34,7 @@ const Component = ({
           margin: '0px',
           borderRadius: '0',
         }}
+        size={'small'}
         success
         progress
         percent={Math.ceil(100 * index / (blocks.length - 1))}
@@ -61,36 +62,39 @@ const Component = ({
                 }}
               />
             )}
-            <React.Fragment>
-              <div
-                style={{
-                  marginTop: '40px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
+
+            <div
+              style={{
+                opacity: '0.9',
+                marginTop: '40px',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}>
+              <StepButton
+                size={'tiny'}
+                fluid
+                onClick={() => setIndex(index - 1)}
+                disabled={index === 0}>
+                Back
+              </StepButton>
+              <StepButton
+                size={'tiny'}
+                fluid
+                disabled={isFinished}
+                onClick={() => {
+                  updateBlockWithValue({ index, value: 0 })
+                  setIndex(index + 1)
                 }}>
-                <StepButton
-                  fluid
-                  onClick={() => setIndex(index - 1)}
-                  disabled={index === 0}>
-                  Back
-                </StepButton>
-                <StepButton
-                  fluid
-                  disabled={isFinished}
-                  onClick={() => {
-                    updateBlockWithValue({ index, value: 0 })
-                    setIndex(index + 1)
-                  }}>
-                  Skip
-                </StepButton>
-                <StepButton
-                  disabled={isLastStep}
-                  fluid
-                  onClick={() => setIndex(index + 1)}>
-                  Next
-                </StepButton>
-              </div>
-            </React.Fragment>
+                Skip
+              </StepButton>
+              <StepButton
+                size={'tiny'}
+                disabled={isLastStep}
+                fluid
+                onClick={() => setIndex(index + 1)}>
+                Next
+              </StepButton>
+            </div>
           </Grid.Column>
         </Grid>
       </React.Fragment>

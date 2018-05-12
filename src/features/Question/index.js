@@ -20,16 +20,26 @@ const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
 
 export const Question = ({ block, onChange = () => {} }) => (
   <div>
-    <h2
+    <div
       style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
         textAlign: 'center',
-        color: 'white',
-        fontWeight: '100',
         height: '100px',
-        fontSize: block.name.length > 10 ? '58px' : '80px',
       }}>
-      {block.name}
-    </h2>
+      <h2
+        style={{
+          textAlign: 'center',
+          color: 'white',
+          fontWeight: '100',
+
+          lineHeight: '1.0em',
+          fontSize: block.name.length > 10 ? '58px' : '80px',
+        }}>
+        {block.name}
+      </h2>
+    </div>
     <h3
       style={{
         textAlign: 'center',
