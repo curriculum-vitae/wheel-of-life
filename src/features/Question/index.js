@@ -25,7 +25,8 @@ export const Question = ({ block, onChange = () => {} }) => (
         textAlign: 'center',
         color: 'white',
         fontWeight: '100',
-        fontSize: '64px',
+        height: '100px',
+        fontSize: block.name.length > 10 ? '58px' : '80px',
       }}>
       {block.name}
     </h2>
