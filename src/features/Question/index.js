@@ -25,11 +25,18 @@ export const Question = ({ block, onChange = () => {} }) => (
         textAlign: 'center',
         color: 'white',
         fontWeight: '100',
-        fontSize: '48px',
+        fontSize: '64px',
       }}>
       {block.name}
     </h2>
-
+    <h3
+      style={{
+        textAlign: 'center',
+        color: 'white',
+        fontSize: '20px',
+      }}>
+      How would you rate this part of your life?
+    </h3>
     <br />
     <Visible xs sm>
       {renderVoteButtons({ onChange, block })(1, 5)}
