@@ -61,15 +61,29 @@ const Header = ({ children, ...props }) => (
   />
 )
 
-const NextActions = compose(
+const Score = compose(
   withProps(({ blocks }) => ({
     average: getAverage({ blocks }),
   })),
 )(({ blocks, average }) => (
-  <React.Fragment>
-    Your average score is <b>{String(average).slice(0, 3)}</b>. That's{' '}
-    {mapAverageToGrade(average)}.
+  <div
+    style={{
+      textAlign: 'center',
+    }}>
+    <div style={{ fontSize: '32px' }}>
+      Life Balance Score
+      <br />
+      <br />
+      <br />
+      <b>{String(average).slice(0, 3)}</b>
+    </div>
     <br />
+    <div>That's {mapAverageToGrade(average)}.</div>
+  </div>
+))
+
+const NextActions = ({ blocks, average }) => (
+  <React.Fragment>
     <List ordered>
       <List.Item>Find what sphere are lacking your attention.</List.Item>
       <List.Item>
@@ -92,16 +106,9 @@ const NextActions = compose(
       </List.Item>
     </List>
   </React.Fragment>
-))
+)
 
-const Component = ({
-  setIndex = () => {},
-  blocks,
-  index = 0,
-  measureRef,
-  measure,
-  contentRect,
-}) => (
+const Component = ({ blocks, measureRef, measure, contentRect }) => (
   <div
     style={{
       backgroundColor: grey[200],
@@ -119,9 +126,13 @@ const Component = ({
           blocks={blocks}
         />
       ) : null}
-
+      <br />
+      <br />
+      <br />
+      <Score blocks={blocks} />
+      <br />
       <Header>What is next?</Header>
-      <NextActions blocks={blocks} />
+      <NextActions />
       <Header>Actions</Header>
       <React.Fragment>
         <Link to={'/quiz'}>
