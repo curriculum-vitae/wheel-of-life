@@ -19,22 +19,19 @@ const AttentionBox = () => (
         padding: '40px',
       }}>
       <Row>
-        <Col xs={12} md={4}>
+        <Col xs={12} md={5}>
           <Image
             style={{
               float: 'right',
               marginBottom: '12px',
             }}
-            src={
-              'https://www.wikihow.com/images/thumb/3/38/Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg/aid689960-v4-728px-Draw-a-Cartoon-Face-%28Emotions%29-Step-01.jpg'
-            }
+            src={'/images/ava.jpg'}
             size={'small'}
-            circular
           />
         </Col>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={5}>
           <div>
-            <h1>«Hey! I’ve tried it for myself and it changed my life! </h1>
+            <h1>«Hey! I’ve tried it for myself and it changed my life.</h1>
             <h1>
               It might not work for you, but you are two minutes away to figure
               this out.»

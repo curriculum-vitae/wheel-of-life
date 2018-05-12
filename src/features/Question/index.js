@@ -3,18 +3,18 @@ import React from 'react'
 import { Visible } from 'react-grid-system'
 import { times } from 'lodash/fp'
 
-const renderVoteButtons = ({ onChange, block }) => (from, to) => (
+const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
   <Button.Group size={'huge'} fluid>
     {times(index => (
       <Button
-        key={index + 1 + from}
-        primary={block.value === index + 1 + from}
+        key={index + indexStart}
+        primary={block.value === index + indexStart}
         active={false}
         compact
-        onClick={() => onChange(index + from)}>
-        {index + from}
+        onClick={() => onChange(index + indexStart)}>
+        {index + indexStart}
       </Button>
-    ))(to - from + 1)}
+    ))(indexEnd - indexStart + 1)}
   </Button.Group>
 )
 
