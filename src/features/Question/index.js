@@ -1,22 +1,24 @@
 import { Button, Hidden } from '@material-ui/core'
 
 import React from 'react'
-import { Visible } from 'react-grid-system'
 import { times } from 'lodash/fp'
 
 const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
-  <div>
+  <React.Fragment>
     {times(index => (
       <Button
         key={index + indexStart}
-        variant={'raised'}
+        style={{
+          width: '20%',
+        }}
+        variant={block.value === index + indexStart ? 'raised' : 'outlined'}
         color={block.value === index + indexStart ? 'primary' : 'secondary'}
         disabled={false}
         onClick={() => onChange(index + indexStart)}>
         {index + indexStart}
       </Button>
     ))(indexEnd - indexStart + 1)}
-  </div>
+  </React.Fragment>
 )
 
 export const Question = ({ block, onChange = () => {} }) => (
