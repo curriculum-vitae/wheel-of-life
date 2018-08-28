@@ -51,11 +51,8 @@ export const Question = ({ block, onChange = () => {} }) => (
     <br />
     <Hidden mdUp>
       {renderVoteButtons({ onChange, block })(1, 5)}
-      <div style={{ height: '1px' }} />
       {renderVoteButtons({ onChange, block })(6, 10)}
     </Hidden>
-    <Hidden xs sm>
-      {renderVoteButtons({ onChange, block })(1, 10)}
-    </Hidden>
+    <Hidden smDown>{renderVoteButtons({ onChange, block })(1, 10)}</Hidden>
   </div>
 )

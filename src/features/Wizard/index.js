@@ -32,7 +32,7 @@ const Component = ({
       <br />
       <React.Fragment>
         <Grid container justify={'center'}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={6} lg={4}>
             {isFinished ? (
               <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
             ) : (
