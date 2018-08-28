@@ -32,9 +32,7 @@ export const Question = ({ block, onChange = () => {} }) => (
       <h2
         style={{
           textAlign: 'center',
-          color: 'white',
           fontWeight: '100',
-
           lineHeight: '1.0em',
           fontSize: block.name.length > 10 ? '58px' : '80px',
         }}>
@@ -44,7 +42,6 @@ export const Question = ({ block, onChange = () => {} }) => (
     <h3
       style={{
         textAlign: 'center',
-        color: 'white',
         fontSize: '20px',
       }}>
       How would you rate this part of your life?

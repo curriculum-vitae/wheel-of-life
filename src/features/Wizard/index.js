@@ -25,7 +25,6 @@ const Component = ({
     <div
       style={{
         height: '100vh',
-        backgroundColor: index < blocks.length ? blocks[index].color : 'white',
         transition: 'background-color 1.0s',
       }}>
       <AppBar />

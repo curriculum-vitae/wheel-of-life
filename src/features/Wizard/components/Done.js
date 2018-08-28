@@ -13,7 +13,6 @@ const WizardDone = ({ setIndex, index, blocks }) => (
       style={{
         textAlign: 'center',
         fontSize: '60px',
-        color: 'white',
       }}>
       DONE!
     </h1>
