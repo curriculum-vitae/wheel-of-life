@@ -1,7 +1,7 @@
-import { Button, List } from 'semantic-ui-react'
 import { compose, withProps } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { Share } from 'features/Share'
@@ -84,27 +84,27 @@ const Score = compose(
 
 const NextActions = ({ blocks, average }) => (
   <React.Fragment>
-    <List ordered>
-      <List.Item>Find what sphere are lacking your attention.</List.Item>
-      <List.Item>
+    <ul>
+      <li>Find what sphere are lacking your attention.</li>
+      <li>
         Find out ways to improve it
-        <List.List>
-          <List.Item>Find your motivation</List.Item>
-          <List.Item>Put more effort</List.Item>
-          <List.Item>Spend less time to other spheres</List.Item>
-          <List.Item>Check articles</List.Item>
-        </List.List>
-      </List.Item>
-      <List.Item>
+        <ul>
+          <li>Find your motivation</li>
+          <li>Put more effort</li>
+          <li>Spend less time to other spheres</li>
+          <li>Check articles</li>
+        </ul>
+      </li>
+      <li>
         Consider this as helpers
-        <List.List>
-          <List.Item>Reading articles</List.Item>
-          <List.Item>Reading books</List.Item>
-          <List.Item>Watching lectures</List.Item>
-          <List.Item>Finding a coach</List.Item>
-        </List.List>
-      </List.Item>
-    </List>
+        <ul>
+          <li>Reading articles</li>
+          <li>Reading books</li>
+          <li>Watching lectures</li>
+          <li>Finding a coach</li>
+        </ul>
+      </li>
+    </ul>
   </React.Fragment>
 )
 
@@ -136,7 +136,7 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
       <Header>Actions</Header>
       <React.Fragment>
         <Link to={'/quiz'}>
-          <Button>Start again</Button>
+          <Button variant={'outlined'}>Start again</Button>
         </Link>
       </React.Fragment>
       <Header>Sharing</Header>

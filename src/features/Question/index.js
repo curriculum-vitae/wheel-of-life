@@ -1,21 +1,22 @@
-import { Button } from 'semantic-ui-react'
+import { Button, Hidden } from '@material-ui/core'
+
 import React from 'react'
 import { Visible } from 'react-grid-system'
 import { times } from 'lodash/fp'
 
 const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
-  <Button.Group size={'huge'} fluid>
+  <div>
     {times(index => (
       <Button
         key={index + indexStart}
-        primary={block.value === index + indexStart}
-        active={false}
-        compact
+        variant={'raised'}
+        color={block.value === index + indexStart ? 'primary' : 'secondary'}
+        disabled={false}
         onClick={() => onChange(index + indexStart)}>
         {index + indexStart}
       </Button>
     ))(indexEnd - indexStart + 1)}
-  </Button.Group>
+  </div>
 )
 
 export const Question = ({ block, onChange = () => {} }) => (
@@ -49,13 +50,13 @@ export const Question = ({ block, onChange = () => {} }) => (
       How would you rate this part of your life?
     </h3>
     <br />
-    <Visible xs sm>
+    <Hidden mdUp>
       {renderVoteButtons({ onChange, block })(1, 5)}
       <div style={{ height: '1px' }} />
       {renderVoteButtons({ onChange, block })(6, 10)}
-    </Visible>
-    <Visible md lg xl>
+    </Hidden>
+    <Hidden xs sm>
       {renderVoteButtons({ onChange, block })(1, 10)}
-    </Visible>
+    </Hidden>
   </div>
 )

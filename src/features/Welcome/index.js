@@ -3,8 +3,8 @@ import CallToAction from 'features/Welcome/CallToAction'
 import React from 'react'
 
 export const Welcome = () => (
-  <div>
+  <React.Fragment>
     <Attention />
     <CallToAction />
-  </div>
+  </React.Fragment>
 )

@@ -1,8 +1,6 @@
-import { Button, Divider, Image } from 'semantic-ui-react'
-import { Col, Container, Hidden, Row, Visible } from 'react-grid-system'
+import { Avatar, Grid } from '@material-ui/core'
 
 import { AppBar } from 'features/AppBar'
-import { Link } from 'react-router-dom'
 import React from 'react'
 import { red } from 'utils/colors'
 
@@ -18,18 +16,19 @@ export default () => (
       style={{
         padding: '40px',
       }}>
-      <Row>
-        <Col xs={12} md={5}>
-          <Image
+      <Grid container spacing={16}>
+        <Grid item xs={12} md={5}>
+          <Avatar
             style={{
               float: 'right',
               marginBottom: '12px',
+              width: '160px',
+              height: '160px',
             }}
             src={'/images/ava.jpg'}
-            size={'small'}
           />
-        </Col>
-        <Col xs={12} md={5}>
+        </Grid>
+        <Grid item xs={12} md={5}>
           <div>
             <h1>«Hey! I’ve tried it for myself and it changed my life.</h1>
             <h1>
@@ -42,8 +41,8 @@ export default () => (
             <br />
             <br />
           </div>
-        </Col>
-      </Row>
+        </Grid>
+      </Grid>
     </div>
   </div>
 )

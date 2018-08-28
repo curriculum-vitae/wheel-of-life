@@ -1,15 +1,15 @@
+import { Button, Grid } from '@material-ui/core'
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
 import { BLOCKS } from 'utils/constants'
-import { Button } from 'semantic-ui-react'
-import { Grid } from 'semantic-ui-react'
-import { Progress } from 'semantic-ui-react'
 import { Question } from 'features/Question'
 import React from 'react'
 import { WizardDone } from 'features/Wizard/components/Done'
 
-const StepButton = ({ ...props }) => <Button size={'large'} {...props} />
+const StepButton = ({ ...props }) => (
+  <Button variant={'raised'} size={'large'} {...props} />
+)
 
 const Component = ({
   match,
@@ -29,28 +29,14 @@ const Component = ({
         transition: 'background-color 1.0s',
       }}>
       <AppBar />
-      <Progress
-        style={{
-          margin: '0px',
-          borderRadius: '0',
-        }}
-        size={'small'}
-        success
-        progress
-        percent={Math.ceil(100 * index / (blocks.length - 1))}
-      />
       <br />
       <br />
       <br />
       <br />
       <br />
       <React.Fragment>
-        <Grid centered columns={1}>
-          <Grid.Column
-            mobile={14}
-            tablet={10}
-            computer={8}
-            style={{ maxWidth: '600px' }}>
+        <Grid container justify={'center'}>
+          <Grid item xs={12} md={4}>
             {isFinished ? (
               <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
             ) : (
@@ -95,7 +81,7 @@ const Component = ({
                 Next
               </StepButton>
             </div>
-          </Grid.Column>
+          </Grid>
         </Grid>
       </React.Fragment>
     </div>

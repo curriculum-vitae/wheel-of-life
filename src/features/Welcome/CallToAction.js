@@ -1,6 +1,6 @@
 import { orange, red } from 'utils/colors'
 
-import { Button } from 'semantic-ui-react'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
@@ -22,7 +22,7 @@ export default () => (
     <br />
 
     <Link to={'/quiz'}>
-      <Button color={'orange'} size={'massive'}>
+      <Button variant={'raised'} color={'primary'} size={'large'}>
         Start questioning your life
       </Button>
       <p style={{ color: orange[600] }}>it's completely free</p>

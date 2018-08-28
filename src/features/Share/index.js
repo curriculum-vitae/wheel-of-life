@@ -1,5 +1,5 @@
-import { Button } from 'semantic-ui-react'
-import { Input } from 'semantic-ui-react'
+import { Button, TextField } from '@material-ui/core'
+
 import React from 'react'
 import copy from 'copy-to-clipboard'
 
@@ -24,11 +24,10 @@ const createTwitterShareURL = () => {
 
 export const Share = ({ blocks }) => (
   <div>
-    <Input
+    <TextField
       style={{
         width: '100%',
       }}
-      action={<Button onClick={() => runCopy()}>copy</Button>}
       onClick={() => runCopy()}
       value={createShareURL()}
       onChange={() => {}}
@@ -40,12 +39,12 @@ export const Share = ({ blocks }) => (
         display: 'flex',
       }}>
       <a target={'_blank'} href={createFacebookShareURL()}>
-        <Button color={'facebook'}>Share with FaceBook</Button>
+        <Button color={'primary'}>Share with FaceBook</Button>
       </a>
       <br />
       <br />
       <a target={'_blank'} href={createTwitterShareURL()}>
-        <Button color={'twitter'}>Share with Twitter</Button>
+        <Button color={'primary'}>Share with Twitter</Button>
       </a>
     </div>
   </div>
