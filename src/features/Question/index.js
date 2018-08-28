@@ -9,11 +9,11 @@ const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
       <Button
         key={index + indexStart}
         style={{
-          width: '20%',
+          width: '18%',
+          margin: '1%',
         }}
         variant={block.value === index + indexStart ? 'raised' : 'outlined'}
-        color={block.value === index + indexStart ? 'primary' : 'secondary'}
-        disabled={false}
+        color={block.value === index + indexStart ? 'primary' : 'default'}
         onClick={() => onChange(index + indexStart)}>
         {index + indexStart}
       </Button>
