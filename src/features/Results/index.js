@@ -99,15 +99,14 @@ const NextActions = () => (
 )
 
 const Component = ({ blocks, measureRef, measure, contentRect }) => (
-  <div>
+  <React.Fragment>
     <AppBar />
     <br />
     <br />
-    <br />
-    <br />
-
     <Column measureRef={measureRef}>
-      <Header>Results</Header>
+      <Score blocks={blocks} />
+      <br />
+      <br />
       {contentRect.entry && contentRect.entry.width ? (
         <Wheel
           height={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
@@ -117,9 +116,7 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
       ) : null}
       <br />
       <br />
-      <br />
-      <Score blocks={blocks} />
-      <br />
+
       <Header>What is next?</Header>
       <NextActions />
       <br />
@@ -141,7 +138,7 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
     <br />
     <br />
     <br />
-  </div>
+  </React.Fragment>
 )
 
 export const Results = compose(

@@ -1,4 +1,4 @@
-import { Button, Hidden } from '@material-ui/core'
+import { Button, Hidden, Typography } from '@material-ui/core'
 
 import React from 'react'
 import { times } from 'lodash/fp'
@@ -22,37 +22,24 @@ const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
 )
 
 export const Question = ({ block, onChange = () => {} }) => (
-  <div>
-    <div
+  <React.Fragment>
+    <Typography
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        textAlign: 'center',
-        height: '100px',
-      }}>
-      <h2
-        style={{
-          textAlign: 'center',
-          fontWeight: '100',
-          lineHeight: '1.0em',
-          fontSize: block.name.length > 10 ? '58px' : '80px',
-        }}>
-        {block.name}
-      </h2>
-    </div>
-    <h3
-      style={{
-        textAlign: 'center',
-        fontSize: '20px',
-      }}>
+        height: '120px',
+      }}
+      align={'center'}
+      variant={block.name.length > 12 ? 'display2' : 'display3'}>
+      {block.name}
+    </Typography>
+
+    <Typography align={'center'} variant={'title'} gutterBottom>
       How would you rate this part of your life?
-    </h3>
-    <br />
+    </Typography>
+
     <Hidden mdUp>
       {renderVoteButtons({ onChange, block })(1, 5)}
       {renderVoteButtons({ onChange, block })(6, 10)}
     </Hidden>
     <Hidden smDown>{renderVoteButtons({ onChange, block })(1, 10)}</Hidden>
-  </div>
+  </React.Fragment>
 )
