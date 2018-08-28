@@ -10,15 +10,17 @@ export default () => (
           style={{
             float: 'right',
             marginBottom: '12px',
-            width: '160px',
-            height: '160px',
+            width: '120px',
+            height: '120px',
           }}
           src={'/images/ava.jpg'}
         />
       </Grid>
       <Grid item xs={12} md={5}>
         <Typography variant={'display1'} gutterBottom>
-          Hey! I’ve tried it for myself and it changed my life.
+          Hey! <br />
+          <br />I’ve applied this simple technique for myself and it's changing
+          my life in the best possible way.
         </Typography>
         <Typography variant={'display1'} gutterBottom>
           It might not work for you, but you are two minutes away to figure this
