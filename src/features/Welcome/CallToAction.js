@@ -6,7 +6,7 @@ import { orange } from '@material-ui/core/colors'
 
 export default () => (
   <div style={{ textAlign: 'center' }}>
-    <Typography align={'center'} variant={'display4'} gutterBottom>
+    <Typography align={'center'} variant={'display3'} gutterBottom>
       What's your<br />
       <span
         style={{
