@@ -100,7 +100,7 @@ export const Wizard = compose(
     process.env.NODE_ENV === 'development' ? BLOCKS.length - 2 : 0,
   ),
   withProps(props => ({
-    isLastStep: props.index === props.blocks.length - 1,
-    isFinished: props.index >= props.blocks.length - 1,
+    isLastStep: props.index === props.blocks.length,
+    isFinished: props.index >= props.blocks.length,
   })),
 )(Component)
