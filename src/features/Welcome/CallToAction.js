@@ -1,29 +1,24 @@
-import { orange, red } from '@material-ui/core/colors'
+import { Button, Typography } from '@material-ui/core'
 
-import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { orange } from '@material-ui/core/colors'
 
 export default () => (
   <div style={{ textAlign: 'center', padding: '20px' }}>
-    <br />
-    <br />
-
-    <h1 style={{ color: red[500] }}>
-      What's your{' '}
+    <Typography align={'center'} variant={'display3'} gutterBottom>
+      What's your<br />
       <span
         style={{
           fontWeight: '900',
         }}>
         Life Balance Score?
       </span>
-    </h1>
-    <h3>Use this simple tool to find out</h3>
-    <br />
+    </Typography>
 
     <Link to={'/quiz'}>
       <Button variant={'raised'} color={'primary'} size={'large'}>
-        Start questioning your life
+        Start To Find Out
       </Button>
       <p style={{ color: orange[600] }}>it's completely free</p>
       <br />
