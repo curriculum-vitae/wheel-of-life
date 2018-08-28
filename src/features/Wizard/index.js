@@ -12,10 +12,8 @@ const StepButton = ({ ...props }) => (
 )
 
 const Component = ({
-  match,
   blocks,
   index,
-  setBlocks,
   setIndex,
   isFinished,
   isLastStep,
@@ -25,7 +23,6 @@ const Component = ({
     <div
       style={{
         height: '100vh',
-        transition: 'background-color 1.0s',
       }}>
       <AppBar />
       <br />
@@ -47,24 +44,19 @@ const Component = ({
                 }}
               />
             )}
-
+            <br />
+            <br />
             <div
               style={{
-                opacity: '0.9',
-                marginTop: '40px',
                 display: 'flex',
                 justifyContent: 'space-between',
               }}>
               <StepButton
-                size={'tiny'}
-                fluid
                 onClick={() => setIndex(index - 1)}
                 disabled={index === 0}>
                 Back
               </StepButton>
               <StepButton
-                size={'tiny'}
-                fluid
                 disabled={isFinished}
                 onClick={() => {
                   updateBlockWithValue({ index, value: 0 })
@@ -73,9 +65,7 @@ const Component = ({
                 Skip
               </StepButton>
               <StepButton
-                size={'tiny'}
                 disabled={isLastStep}
-                fluid
                 onClick={() => setIndex(index + 1)}>
                 Next
               </StepButton>
