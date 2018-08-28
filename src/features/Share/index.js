@@ -39,12 +39,14 @@ export const Share = ({ blocks }) => (
         display: 'flex',
       }}>
       <a target={'_blank'} href={createFacebookShareURL()}>
-        <Button color={'primary'}>Share with FaceBook</Button>
+        <Button variant={'outlined'} style={{ marginRight: '20px' }}>
+          Share with FaceBook
+        </Button>
       </a>
       <br />
       <br />
       <a target={'_blank'} href={createTwitterShareURL()}>
-        <Button color={'primary'}>Share with Twitter</Button>
+        <Button variant={'outlined'}>Share with Twitter</Button>
       </a>
     </div>
   </div>

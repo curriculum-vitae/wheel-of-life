@@ -1,7 +1,7 @@
+import { Button, Paper, Typography } from '@material-ui/core'
 import { compose, withProps } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
-import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { Share } from 'features/Share'
@@ -30,59 +30,49 @@ const mapAverageToGrade = average => {
 
 const Column = ({ children, measureRef, ...props }) => (
   <div
+    ref={measureRef}
     style={{
       display: 'flex',
       justifyContent: 'center',
     }}
     {...props}>
-    <div
-      ref={measureRef}
+    <Paper
       style={{
         margin: '0px 20px',
         width: '100%',
         maxWidth: '620px',
         padding: '14px 20px',
-        borderRadius: '1px',
-        backgroundColor: 'white',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
       }}>
       {children}
-    </div>
+    </Paper>
   </div>
 )
 
 const Header = ({ children, ...props }) => (
-  <h4
-    style={{
-      color: grey[700],
-    }}
-    children={children}
-    {...props}
-  />
+  <Typography variant={'title'} gutterBottom children={children} {...props} />
 )
 
 const Score = compose(
   withProps(({ blocks }) => ({
     average: getAverage({ blocks }),
   })),
-)(({ blocks, average }) => (
-  <div
-    style={{
-      textAlign: 'center',
-    }}>
-    <div style={{ fontSize: '32px' }}>
-      Life Balance Score
-      <br />
-      <br />
-      <br />
+)(({ average }) => (
+  <React.Fragment>
+    <Typography align={'center'} gutterBottom variant={'display1'}>
+      Your Life Balance Score
+    </Typography>
+
+    <Typography align={'center'} variant={'display4'}>
       <b>{String(average).slice(0, 3)}</b>
-    </div>
-    <br />
-    <div>That's {mapAverageToGrade(average)}.</div>
-  </div>
+    </Typography>
+
+    <Typography variant={'body2'} align={'center'}>
+      That's {mapAverageToGrade(average)}.
+    </Typography>
+  </React.Fragment>
 ))
 
-const NextActions = ({ blocks, average }) => (
+const NextActions = () => (
   <React.Fragment>
     <ul>
       <li>Find what sphere are lacking your attention.</li>
@@ -109,15 +99,15 @@ const NextActions = ({ blocks, average }) => (
 )
 
 const Component = ({ blocks, measureRef, measure, contentRect }) => (
-  <div
-    style={{
-      backgroundColor: grey[200],
-    }}>
+  <div>
     <AppBar />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <Column measureRef={measureRef}>
       <Header>Results</Header>
-
       {contentRect.entry && contentRect.entry.width ? (
         <Wheel
           height={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
@@ -132,14 +122,19 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
       <br />
       <Header>What is next?</Header>
       <NextActions />
+      <br />
+      <br />
       <Header>Actions</Header>
       <React.Fragment>
         <Link to={'/quiz'}>
           <Button variant={'outlined'}>Start again</Button>
         </Link>
       </React.Fragment>
+      <br />
+      <br />
+      <br />
+      <br />
       <Header>Sharing</Header>
-
       <Share blocks={blocks} />
     </Column>
     <br />
