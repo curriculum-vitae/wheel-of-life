@@ -113,9 +113,8 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
     style={{
       backgroundColor: grey[200],
     }}>
-    <AppBar color={'black'} />
-    <div style={{ height: '1px' }} />
-    <br />
+    <AppBar />
+
     <Column measureRef={measureRef}>
       <Header>Results</Header>
 
