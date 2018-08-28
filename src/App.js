@@ -10,13 +10,15 @@ import { Wizard } from 'features/Wizard'
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route path={'/'} exact={true} component={Welcome} />
-          <Route path={'/quiz'} exact={true} component={Wizard} />
-          <Route path={'/results/:state'} exact={true} component={Results} />
-        </Switch>
-      </Router>
+      <React.Fragment>
+        <Router>
+          <Switch>
+            <Route path={'/'} exact={true} component={Welcome} />
+            <Route path={'/quiz'} exact={true} component={Wizard} />
+            <Route path={'/results/:state'} exact={true} component={Results} />
+          </Switch>
+        </Router>
+      </React.Fragment>
     )
   }
 }
