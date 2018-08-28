@@ -10,7 +10,7 @@ import {
   purple,
   red,
   yellow,
-} from 'utils/colors'
+} from '@material-ui/core/colors'
 
 const SHADE = 600
 

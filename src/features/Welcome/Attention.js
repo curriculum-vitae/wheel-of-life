@@ -2,7 +2,7 @@ import { Avatar, Grid } from '@material-ui/core'
 
 import { AppBar } from 'features/AppBar'
 import React from 'react'
-import { red } from 'utils/colors'
+import { red } from '@material-ui/core/colors'
 
 export default () => (
   <div

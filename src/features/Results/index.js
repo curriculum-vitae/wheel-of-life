@@ -7,7 +7,7 @@ import React from 'react'
 import { Share } from 'features/Share'
 import { Wheel } from 'features/Wheel'
 import { decodeStateFromString } from 'utils/helpers'
-import { grey } from 'utils/colors'
+import { grey } from '@material-ui/core/colors'
 import { withContentRect } from 'react-measure'
 
 const PROPORTION_OF_WHEEL_ON_PAGE = 1
