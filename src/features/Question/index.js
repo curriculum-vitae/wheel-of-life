@@ -1,25 +1,23 @@
-import { Button, Hidden, Typography } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 
 import React from 'react'
 import { times } from 'lodash/fp'
 
-const renderVoteButtons = ({ onChange, block }) => (indexStart, indexEnd) => (
-  <React.Fragment>
-    {times(index => (
-      <Button
-        key={index + indexStart}
-        style={{
-          width: '18%',
-          margin: '1%',
-        }}
-        variant={block.value === index + indexStart ? 'raised' : 'outlined'}
-        color={block.value === index + indexStart ? 'primary' : 'default'}
-        onClick={() => onChange(index + indexStart)}>
-        {index + indexStart}
-      </Button>
-    ))(indexEnd - indexStart + 1)}
-  </React.Fragment>
-)
+const renderVoteButtons = ({ onChange, block }) => (valueFrom, valueTo) =>
+  times(index => (
+    <Button
+      key={index + valueFrom}
+      style={{
+        flex: '1 0 0px',
+        width: '100%',
+        marginRight: index + valueFrom === valueTo ? '0px' : '8px',
+      }}
+      variant={block.value === index + valueFrom ? 'raised' : 'outlined'}
+      color={block.value === index + valueFrom ? 'primary' : 'default'}
+      onClick={() => onChange(index + valueFrom)}>
+      {index + valueFrom}
+    </Button>
+  ))(valueTo - valueFrom + 1)
 
 export const Question = ({ block, onChange = () => {} }) => (
   <React.Fragment>
@@ -36,10 +34,21 @@ export const Question = ({ block, onChange = () => {} }) => (
       How would you rate this part of your life?
     </Typography>
 
-    <Hidden mdUp>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        marginBottom: '8px',
+      }}>
       {renderVoteButtons({ onChange, block })(1, 5)}
+    </div>
+
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}>
       {renderVoteButtons({ onChange, block })(6, 10)}
-    </Hidden>
-    <Hidden smDown>{renderVoteButtons({ onChange, block })(1, 10)}</Hidden>
+    </div>
   </React.Fragment>
 )

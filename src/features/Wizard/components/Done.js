@@ -1,21 +1,24 @@
+import { Button, Typography } from '@material-ui/core'
 import { map, pick } from 'lodash/fp'
 
-import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { encodeStateToString } from 'utils/helpers'
+import { green } from '@material-ui/core/colors'
 
 const PROPS_TO_PASS_TO_RESULTS = ['id', 'value']
 
 const WizardDone = ({ setIndex, index, blocks }) => (
   <div>
-    <h1
+    <Typography
+      align={'center'}
+      variant={'display3'}
+      gutterBottom
       style={{
-        textAlign: 'center',
-        fontSize: '60px',
+        color: green[700],
       }}>
       DONE!
-    </h1>
+    </Typography>
     <Button
       size={'large'}
       component={Link}

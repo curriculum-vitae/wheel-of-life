@@ -8,7 +8,7 @@ import React from 'react'
 import { WizardDone } from 'features/Wizard/components/Done'
 
 const StepButton = ({ ...props }) => (
-  <Button variant={'raised'} size={'large'} {...props} />
+  <Button variant={'outlined'} size={'small'} {...props} />
 )
 
 const Component = ({
@@ -31,7 +31,7 @@ const Component = ({
       <br />
       <br />
       <React.Fragment>
-        <Grid container justify={'center'}>
+        <Grid container justify={'center'} style={{ padding: '20px' }}>
           <Grid item xs={12} md={6} lg={4}>
             {isFinished ? (
               <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
@@ -44,7 +44,6 @@ const Component = ({
                 }}
               />
             )}
-            <br />
             <br />
             <div
               style={{
