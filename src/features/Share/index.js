@@ -1,4 +1,10 @@
-import { Button, TextField } from '@material-ui/core'
+import {
+  Button,
+  Icon,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from '@material-ui/core'
 
 import React from 'react'
 import copy from 'copy-to-clipboard'
@@ -22,11 +28,25 @@ const createTwitterShareURL = () => {
   return `http://www.twitter.com/share?url=${dest}`
 }
 
-export const Share = ({ blocks }) => (
+export const Share = () => (
   <div>
     <TextField
       style={{
         width: '100%',
+      }}
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position={'end'}>
+            <IconButton
+              variant={'default'}
+              onClick={e => {
+                e.stopPropagation()
+                runCopy()
+              }}>
+              <Icon>file_copy</Icon>
+            </IconButton>
+          </InputAdornment>
+        ),
       }}
       onClick={() => runCopy()}
       value={createShareURL()}
