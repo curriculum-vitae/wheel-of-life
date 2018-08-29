@@ -9,7 +9,7 @@ import { green } from '@material-ui/core/colors'
 const PROPS_TO_PASS_TO_RESULTS = ['id', 'value']
 
 const WizardDone = ({ setIndex, index, blocks }) => (
-  <div>
+  <React.Fragment>
     <Typography
       align={'center'}
       variant={'display3'}
@@ -17,22 +17,24 @@ const WizardDone = ({ setIndex, index, blocks }) => (
       style={{
         color: green[700],
       }}>
-      DONE!
+      Done!
     </Typography>
     <Button
       size={'large'}
       component={Link}
       style={{
         width: '100%',
+        height: '60px',
       }}
-      variant={'raised'}
+      variant={'outlined'}
+      color={'primary'}
       to={`/results/${encodeStateToString({
         blocks: map(pick(PROPS_TO_PASS_TO_RESULTS))(blocks),
       })}`}
       onClick={() => setIndex(index + 1)}>
-      Show results
+      View results
     </Button>
-  </div>
+  </React.Fragment>
 )
 
 export { WizardDone }

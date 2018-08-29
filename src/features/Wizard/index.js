@@ -33,17 +33,22 @@ const Component = ({
       <React.Fragment>
         <Grid container justify={'center'} style={{ padding: '20px' }}>
           <Grid item xs={12} md={6} lg={4}>
-            {isFinished ? (
-              <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
-            ) : (
-              <Question
-                block={blocks[index]}
-                onChange={value => {
-                  updateBlockWithValue({ index, value })
-                  setIndex(index + 1)
-                }}
-              />
-            )}
+            <div
+              style={{
+                minHeight: '260px',
+              }}>
+              {isFinished ? (
+                <WizardDone setIndex={setIndex} index={index} blocks={blocks} />
+              ) : (
+                <Question
+                  block={blocks[index]}
+                  onChange={value => {
+                    updateBlockWithValue({ index, value })
+                    setIndex(index + 1)
+                  }}
+                />
+              )}
+            </div>
             <br />
             <div
               style={{
