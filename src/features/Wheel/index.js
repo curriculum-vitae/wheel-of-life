@@ -9,8 +9,8 @@ import { WheelChart } from './components/WheelChart'
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
   const BLOCK_MAX_VALUE = 10
 
-  const CIRCLES_SPACE = 0.9
-  const LABELS_SPACE = 1
+  const CIRCLES_SPACE = 0.86
+  const LABELS_SPACE = 0.94
   const radiusOfCircle = (CIRCLES_SPACE * width) / 2
   const radiusOfLabels = (LABELS_SPACE * width) / 2
 
@@ -113,7 +113,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .append('text')
     .style('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('font-size', '12')
+    .style('font-size', '14')
     .style('fill', block => BLOCKS[block.id].color)
     .attr('transform', (block, index) => {
       const angle = getAngleBetween(index)
@@ -122,7 +122,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
       return `translate(${xCoord}, ${yCoord})`
     })
-    .text(block => BLOCKS[block.id].name.toUpperCase().slice(0, 4))
+    .text(block => BLOCKS[block.id].shortName.toUpperCase())
 }
 
 export const Wheel = compose(

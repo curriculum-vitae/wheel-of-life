@@ -130,7 +130,7 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
     <br />
 
     <Column measureRef={measureRef}>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '0px 20px' }}>
         {contentRect.entry && contentRect.entry.width ? (
           <Wheel
             height={Number(
@@ -146,7 +146,7 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
 
       <br />
       <br />
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '0px 20px' }}>
         <Legend blocks={blocks} />
       </div>
       <br />
