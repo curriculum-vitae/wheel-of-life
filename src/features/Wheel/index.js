@@ -7,20 +7,20 @@ import { RefsStore } from '../../utils/refsUtils'
 import { WheelChart } from './components/WheelChart'
 
 const createChart = ({ refs, width = 500, height = 500, blocks }) => {
-  const MAX_VALUE = 10
+  const BLOCK_MAX_VALUE = 10
 
-  const CIRCLES_SPACE = 0.85
-  const LABELS_SPACE = 0.94
-  const radiusOfCircle = CIRCLES_SPACE * width / 2
-  const radiusOfLabels = LABELS_SPACE * width / 2
+  const CIRCLES_SPACE = 0.9
+  const LABELS_SPACE = 1
+  const radiusOfCircle = (CIRCLES_SPACE * width) / 2
+  const radiusOfLabels = (LABELS_SPACE * width) / 2
 
   const countOfBlocks = blocks.length
 
-  const getAngleArcStart = index => 2 * Math.PI * index / countOfBlocks
-  const getAngleArcEnd = index => 2 * Math.PI * (index + 1) / countOfBlocks
+  const getAngleFrom = index => (2 * Math.PI * index) / countOfBlocks
+  const getAngleTo = index => (2 * Math.PI * (index + 1)) / countOfBlocks
 
-  const getAngleLabel = index =>
-    (getAngleArcStart(index) + getAngleArcEnd(index)) / 2 - Math.PI / 2
+  const getAngleBetween = index =>
+    (getAngleFrom(index) + getAngleTo(index)) / 2 - Math.PI / 2
 
   const svg = d3
     .select(refs.svg)
@@ -32,7 +32,7 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   const scaleBar = d3
     .scaleLinear()
-    .domain([0, MAX_VALUE])
+    .domain([0, BLOCK_MAX_VALUE])
     .range([0, radiusOfCircle])
 
   svg
@@ -48,8 +48,8 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
 
   const arc = d3
     .arc()
-    .startAngle((block, index) => getAngleArcStart(index))
-    .endAngle((block, index) => getAngleArcEnd(index))
+    .startAngle((block, index) => getAngleFrom(index))
+    .endAngle((block, index) => getAngleTo(index))
     .innerRadius(0)
 
   /*
@@ -96,7 +96,10 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .attr('y2', -radiusOfCircle)
     .style('stroke', '#696969')
     .style('stroke-width', '.5px')
-    .attr('transform', (block, i) => 'rotate(' + i * 360 / countOfBlocks + ')')
+    .attr(
+      'transform',
+      (block, i) => 'rotate(' + (i * 360) / countOfBlocks + ')',
+    )
 
   const labels = svg.append('g').classed('labels', true)
 
@@ -110,16 +113,16 @@ const createChart = ({ refs, width = 500, height = 500, blocks }) => {
     .append('text')
     .style('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('font-size', '25')
+    .style('font-size', '12')
     .style('fill', block => BLOCKS[block.id].color)
     .attr('transform', (block, index) => {
-      const angle = getAngleLabel(index)
+      const angle = getAngleBetween(index)
       const xCoord = radiusOfLabels * Math.cos(angle)
       const yCoord = radiusOfLabels * Math.sin(angle)
 
       return `translate(${xCoord}, ${yCoord})`
     })
-    .text(block => BLOCKS[block.id].name.toUpperCase().slice(0, 2))
+    .text(block => BLOCKS[block.id].name.toUpperCase().slice(0, 4))
 }
 
 export const Wheel = compose(

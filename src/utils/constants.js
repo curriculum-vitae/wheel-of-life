@@ -12,7 +12,7 @@ import {
   yellow,
 } from '@material-ui/core/colors'
 
-const SHADE = 600
+const SHADE = 800
 
 export const BLOCKS = [
   {

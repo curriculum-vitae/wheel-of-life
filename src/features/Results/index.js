@@ -1,13 +1,13 @@
-import { Button, Paper, Typography } from '@material-ui/core'
+import { Button, Grid, Paper, Typography } from '@material-ui/core'
 import { compose, withProps } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
+import { BLOCKS } from 'utils/constants'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { Share } from 'features/Share'
 import { Wheel } from 'features/Wheel'
 import { decodeStateFromString } from 'utils/helpers'
-import { grey } from '@material-ui/core/colors'
 import { withContentRect } from 'react-measure'
 
 const PROPORTION_OF_WHEEL_ON_PAGE = 1
@@ -28,24 +28,49 @@ const mapAverageToGrade = average => {
   return 'ERROR'
 }
 
-const Column = ({ children, measureRef, ...props }) => (
-  <div
-    ref={measureRef}
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-    }}
-    {...props}>
-    <Paper
-      style={{
-        margin: '0px 20px',
-        width: '100%',
-        maxWidth: '620px',
-        padding: '14px 20px',
-      }}>
-      {children}
-    </Paper>
-  </div>
+const Legend = ({ blocks }) => (
+  <React.Fragment>
+    <Grid container spacing={16}>
+      {blocks.map((block, index) => (
+        <Grid item xs={12} md={6} style={{ padding: '8px' }}>
+          <div
+            style={{
+              height: '72%',
+              width: '20px',
+              marginRight: '4px',
+              backgroundColor: BLOCKS[index].color,
+              display: 'inline-block',
+            }}
+          />
+
+          <Typography
+            style={{
+              display: 'inline-block',
+            }}>
+            {BLOCKS[index].name}
+          </Typography>
+          <Typography
+            style={{
+              display: 'inline-block',
+              width: '20px',
+              float: 'right',
+              marginRight: '10px',
+            }}
+            align={'right'}>
+            {block.value}
+          </Typography>
+        </Grid>
+      ))}
+    </Grid>
+  </React.Fragment>
+)
+
+const Column = ({ children, measureRef }) => (
+  <Grid container justify={'center'}>
+    <Grid item xs={12} md={4}>
+      <div ref={measureRef}>{children}</div>
+    </Grid>
+  </Grid>
 )
 
 const Header = ({ children, ...props }) => (
@@ -103,36 +128,51 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
     <AppBar />
     <br />
     <br />
-    <Column measureRef={measureRef}>
-      <Score blocks={blocks} />
-      <br />
-      <br />
-      {contentRect.entry && contentRect.entry.width ? (
-        <Wheel
-          height={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
-          width={Number(contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE)}
-          blocks={blocks}
-        />
-      ) : null}
-      <br />
-      <br />
 
-      <Header>What is next?</Header>
-      <NextActions />
+    <Column measureRef={measureRef}>
+      <div style={{ padding: '20px' }}>
+        {contentRect.entry && contentRect.entry.width ? (
+          <Wheel
+            height={Number(
+              contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE,
+            )}
+            width={Number(
+              contentRect.entry.width * PROPORTION_OF_WHEEL_ON_PAGE,
+            )}
+            blocks={blocks}
+          />
+        ) : null}
+      </div>
+
       <br />
       <br />
-      <Header>Actions</Header>
-      <React.Fragment>
-        <Link to={'/quiz'}>
-          <Button variant={'outlined'}>Start again</Button>
-        </Link>
-      </React.Fragment>
+      <div style={{ padding: '20px' }}>
+        <Legend blocks={blocks} />
+      </div>
       <br />
       <br />
-      <br />
-      <br />
-      <Header>Sharing</Header>
-      <Share blocks={blocks} />
+      <Paper style={{ padding: '20px' }}>
+        <Score blocks={blocks} />
+        <br />
+        <br />
+
+        <Header>What is next?</Header>
+        <NextActions />
+        <br />
+        <br />
+        <Header>Actions</Header>
+        <React.Fragment>
+          <Link to={'/quiz'}>
+            <Button variant={'outlined'}>Start again</Button>
+          </Link>
+        </React.Fragment>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Header>Sharing</Header>
+        <Share blocks={blocks} />
+      </Paper>
     </Column>
     <br />
     <br />
