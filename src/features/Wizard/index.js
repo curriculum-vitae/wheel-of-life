@@ -23,7 +23,7 @@ const Component = ({
     <div
       style={{
         height: '100vh',
-        backgroundColor: isFinished ? 'unset' : BLOCKS[index].color,
+        backgroundColor: isFinished ? 'unset' : BLOCKS[index].palette[400],
         transition: 'background-color 0.5s ease',
       }}>
       <AppBar />
