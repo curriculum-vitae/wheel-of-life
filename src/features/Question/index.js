@@ -25,7 +25,7 @@ export const Question = ({ block, onChange = () => {} }) => (
   <React.Fragment>
     <Typography
       style={{
-        height: '120px',
+        height: '100px',
       }}
       align={'center'}
       variant={block.name.length > 12 ? 'display2' : 'display3'}>
@@ -35,7 +35,7 @@ export const Question = ({ block, onChange = () => {} }) => (
     <Typography align={'center'} variant={'title'} gutterBottom>
       How would you rate this part of your life?
     </Typography>
-
+    <br />
     <div
       style={{
         display: 'flex',
