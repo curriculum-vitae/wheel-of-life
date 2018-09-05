@@ -15,7 +15,7 @@ const PROPORTION_OF_WHEEL_ON_PAGE = 1
 const getAverage = ({ blocks }) => {
   return (
     blocks.reduce((summ, block) => (summ = summ + block.value), 0) /
-    blocks.length
+    blocks.filter(block => block.value > 0).length
   )
 }
 
