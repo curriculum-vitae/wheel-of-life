@@ -11,10 +11,7 @@ import { grey } from '@material-ui/core/colors'
 export const AppBar = () => (
   <AppBarMaterial position={'sticky'}>
     <Toolbar>
-      <Typography
-        variant={'title'}
-        color={'inherit'}
-        style={{ color: 'black' }}>
+      <Typography variant={'title'} color={'inherit'}>
         <Link to={'/'}>Wheel of Life</Link>
       </Typography>
     </Toolbar>

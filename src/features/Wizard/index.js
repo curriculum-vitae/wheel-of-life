@@ -1,4 +1,4 @@
-import { Button, Grid } from '@material-ui/core'
+import { Button, Grid, MuiThemeProvider } from '@material-ui/core'
 import { compose, withProps, withState, withStateHandlers } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
@@ -6,10 +6,18 @@ import { BLOCKS } from 'utils/constants'
 import { Question } from 'features/Question'
 import React from 'react'
 import { WizardDone } from 'features/Wizard/components/Done'
+import { createMuiTheme } from '@material-ui/core/styles'
 
 const StepButton = ({ ...props }) => (
   <Button variant={'outlined'} size={'small'} {...props} />
 )
+
+const createMuiThemePaletteWithColor = primary =>
+  createMuiTheme({
+    palette: {
+      primary,
+    },
+  })
 
 const Component = ({
   blocks,
@@ -23,10 +31,15 @@ const Component = ({
     <div
       style={{
         height: '100vh',
-        backgroundColor: isFinished ? 'unset' : BLOCKS[index].palette[800],
-        transition: 'background-color 0.5s ease',
+        backgroundColor: isFinished ? 'unset' : BLOCKS[index].palette[400],
+        transition: 'background-color 0.2s ease',
       }}>
-      <AppBar />
+      <MuiThemeProvider
+        theme={createMuiThemePaletteWithColor(
+          isFinished ? undefined : BLOCKS[index].palette,
+        )}>
+        <AppBar />
+      </MuiThemeProvider>
       <br />
       <br />
       <br />
