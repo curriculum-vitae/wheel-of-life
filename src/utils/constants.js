@@ -19,6 +19,7 @@ export const BLOCKS = [
     id: 0,
     name: 'Health',
     color: red[SHADE],
+
     questions: [
       'Can you say you are in a good shape?',
       'Do you exercise on some regular basis?',

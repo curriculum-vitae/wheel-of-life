@@ -32,7 +32,12 @@ const Legend = ({ blocks }) => (
   <React.Fragment>
     <Grid container spacing={16}>
       {blocks.map((block, index) => (
-        <Grid item xs={12} md={6} style={{ padding: '8px' }}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{ padding: '8px' }}
+          key={BLOCKS[index].name}>
           <div
             style={{
               height: '72%',
