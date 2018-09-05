@@ -10,11 +10,13 @@ const renderVoteButtons = ({ onChange, block }) => (valueFrom, valueTo) =>
       style={{
         flex: '1 0 0px',
         width: '100%',
+        minWidth: '32px',
         marginRight: index + valueFrom === valueTo ? '0px' : '8px',
       }}
       variant={block.value === index + valueFrom ? 'raised' : 'outlined'}
       color={block.value === index + valueFrom ? 'primary' : 'default'}
-      onClick={() => onChange(index + valueFrom)}>
+      onClick={() => onChange(index + valueFrom)}
+      size={'small'}>
       {index + valueFrom}
     </Button>
   ))(valueTo - valueFrom + 1)
