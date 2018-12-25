@@ -1,4 +1,12 @@
-import { Button, Grid, Paper, Typography } from '@material-ui/core'
+import {
+  Button,
+  Grid,
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+} from '@material-ui/core'
 import { compose, withProps } from 'recompose'
 
 import { AppBar } from 'features/AppBar'
@@ -104,27 +112,34 @@ const Score = compose(
 
 const NextActions = () => (
   <React.Fragment>
-    <ul>
-      <li>Find what sphere are lacking your attention.</li>
-      <li>
-        Find out ways to improve it
-        <ul>
-          <li>Find your motivation</li>
-          <li>Put more effort</li>
-          <li>Spend less time to other spheres</li>
-          <li>Check articles</li>
-        </ul>
-      </li>
-      <li>
-        Consider this as helpers
-        <ul>
-          <li>Reading articles</li>
-          <li>Reading books</li>
-          <li>Watching lectures</li>
-          <li>Finding a coach</li>
-        </ul>
-      </li>
-    </ul>
+    <List>
+      <ListItem divider>
+        <ListItemText
+          primary={'Find what sphere are lacking your attention.'}
+        />
+      </ListItem>
+      <ListItem divider>
+        <ListItemText primary={'Find out ways to improve it'} />
+      </ListItem>
+      <ListItem divider>
+        <ListItemText primary={'Find your motivation'} />
+      </ListItem>
+      <ListItem divider>
+        <ListItemText primary={'Put more effort'} />
+      </ListItem>
+      <ListItem divider>
+        <ListItemText primary={'Spend less time to other spheres'} />
+      </ListItem>
+
+      <ListItem>
+        <ListItemText
+          primary={'Consider this as helpers'}
+          secondary={
+            'Reading articles, Reading books, Watching lectures, Finding a coach'
+          }
+        />
+      </ListItem>
+    </List>
   </React.Fragment>
 )
 
@@ -159,20 +174,23 @@ const Component = ({ blocks, measureRef, measure, contentRect }) => (
       <Paper style={{ padding: '20px' }}>
         <Score blocks={blocks} />
         <br />
-        <br />
-
-        <Header>What is next?</Header>
+      </Paper>
+      <br />
+      <Paper>
+        <div style={{ padding: '20px' }}>
+          <Header>What is next?</Header>
+        </div>
         <NextActions />
-        <br />
-        <br />
+      </Paper>
+      <br />
+      <Paper style={{ padding: '20px' }}>
         <Header>Actions</Header>
         <React.Fragment>
           <Link to={'/quiz'}>
             <Button variant={'outlined'}>Start again</Button>
           </Link>
         </React.Fragment>
-        <br />
-        <br />
+
         <br />
         <br />
         <Header>Sharing</Header>
